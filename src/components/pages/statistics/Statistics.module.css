@@ -1,0 +1,42 @@
+.layout {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+/* desktop */
+@media (min-width: 1400px) {
+}
+
+/* not desktop */
+@media (max-width: 1400px) {
+    .layout {
+        flex-direction: column;
+    }
+}
+
+/* portrait phones */
+@media only screen and (min-device-width: 280px) and (max-device-width: 540px) {
+
+}
+
+/* landscape phones */
+@media only screen and (min-device-width: 653px) and (max-device-width: 915px) {
+
+}
+
+/* portrait tablets */
+@media only screen and (min-device-height: 1024px) and (max-device-width: 915px) {
+
+}
+
+/* landscape tablets */
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1368px) {
+
+}
+
+/* fold portrait  */
+@media only screen and (min-device-width: 280px) and (max-device-width: 280px) {
+
+}
+

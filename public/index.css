@@ -1,0 +1,18 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* prevent navlinks in main nav from moving
+    when navigating between pages that
+    have a scroll bar and viceversa
+    */
+    margin-right: calc(-1 * (100vw - 100%));
+    /* hide the x scroll that appears
+    due to line above
+    */
+    overflow-x: hidden;
+    /* general styling */
+    background-color: white;
+}

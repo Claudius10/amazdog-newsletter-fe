@@ -1,0 +1,58 @@
+.layout {
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 37.5rem;
+    border: 1px solid black;
+}
+
+.title {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.chart {
+    max-width: 35rem;
+    max-height: 25rem;
+}
+
+.info {
+    margin-top: 1rem;
+    display: flex;
+    gap: 14.5rem;
+}
+
+/* desktop */
+@media (min-width: 1400px) {
+}
+
+/* not desktop */
+@media (max-width: 1400px) {
+
+}
+
+/* portrait phones */
+@media only screen and (min-device-width: 280px) and (max-device-width: 540px) {
+
+}
+
+/* landscape phones */
+@media only screen and (min-device-width: 653px) and (max-device-width: 915px) {
+
+}
+
+/* portrait tablets */
+@media only screen and (min-device-height: 1024px) and (max-device-width: 915px) {
+
+}
+
+/* landscape tablets */
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1368px) {
+
+}
+
+/* fold portrait  */
+@media only screen and (min-device-width: 280px) and (max-device-width: 280px) {
+
+}
