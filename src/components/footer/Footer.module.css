@@ -1,0 +1,48 @@
+.layout {
+    height: 11rem;
+}
+
+.container {
+    background-color: #ffb12c;
+    height: 10rem;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+/* portrait phones */
+@media only screen and (min-device-width: 280px) and (max-device-width: 540px) {
+    /* Styles */
+    .layout {
+        height: 21rem;
+    }
+
+    .container {
+        height: fit-content;
+    }
+}
+
+/* landscape phones */
+@media only screen and (min-device-width: 653px) and (max-device-width: 915px) {
+    /* Styles */
+    .layout {
+        height: 11rem;
+    }
+
+    .container {
+        height: fit-content;
+    }
+}
+
+/* portrait tablets */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    /* Styles */
+    .layout {
+        height: 11rem;
+    }
+
+    .container {
+        height: fit-content;
+    }
+}

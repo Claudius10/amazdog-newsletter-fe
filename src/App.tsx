@@ -1,3 +1,4 @@
+import styles from './App.module.css';
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import {RouterProvider} from "react-router-dom";
 import Routes from "./components/Routes";
@@ -18,7 +19,7 @@ function App() {
 
     const router = Routes();
 
-    return <div>
+    return <div className={styles.wrapper}>
         <QueryClientProvider client={queryClient}>
             <RouterProvider router={router}/>
         </QueryClientProvider>

@@ -77,6 +77,5 @@ export const BarChart = (props: Props) => {
                 <p>Tags: {tags.map((item, index) => <span>{(index ? ', ' : '') + item}</span>)}
                 </p>
             </div>
-
         </div>);
 };
