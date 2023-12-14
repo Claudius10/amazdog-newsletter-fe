@@ -4,8 +4,6 @@ import MobileButton from "../layout/MobileButton/MobileButton";
 import MenuIcon from "../../resources/Icons/menu.png";
 
 
-
-
 // el componente Navigation está usado dentro del componente Header
 // y representa la navigación tanto en desktop como en dispositivos móviles para cambiar de componentes
 // no le hace falta props
@@ -35,6 +33,7 @@ const Navigation = () => {
     // la función de arriba (vacía de momento) representará la acción que se ejecutará cuando se pulsa el botón
     const mobile = (
         <div className={styles.mobile}>
+            {/* abajo los props del componente MobileButton se configuran como si fueran atributos de un elemento html */}
             <MobileButton
                 name={"menu"}
                 action={mobileMenuAction}

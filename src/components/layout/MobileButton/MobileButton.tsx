@@ -15,6 +15,8 @@ import Icon from "../Icon";
 // Este es un componente muy normal que retorna ("return") un elemento html, un button en este caso
 // los componentes, como son funciones, también pueden aceptar parameters de entrada
 // en React, los parametros o arguments de un componente les llamamos "props", corto de propiedades
+// cuando usamos un componente que require props, estas se configuran como se configuran los atributos de un elemento html
+// mira en el componente Navigation como están configurados los props de este componente
 
 type Props = {
     name: string;
