@@ -3,6 +3,20 @@ import Header from "./header/Header";
 import Footer from "./footer/Footer";
 import {Outlet, ScrollRestoration} from "react-router-dom";
 
+/*
+
+1. Completa el componente NewsItem con lo que tienes tú hecho del primer proyecto con los cajitas azule con las noticias
+
+El componente ha de retornar los elementos html con sus reglas css que constituirán un componente para fácilmente pintar noticias
+También crear un type Props en el componente NewsItem con las propiedades necesarias para configurar un componente NewsItem
+como titulo, imagen, descripción, y enlace
+
+2. Completa el footer tal como está hecho en https://amazdog.com/
+
+3. Aprende sobre "diseño responsivo" mediante @media css queries como tengo yo en varios ficheros css
+
+* */
+
 const Main = () => {
 
     return <>
