@@ -1,0 +1,11 @@
+.background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    background-color: #ffb12c;
+    cursor: pointer;
+}

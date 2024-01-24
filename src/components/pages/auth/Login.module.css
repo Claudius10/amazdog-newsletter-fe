@@ -1,0 +1,289 @@
+.formError {
+    color: rgb(199, 30, 30);
+    font-size: small;
+    margin-top: 0.5rem;
+    margin-bottom: 0.3rem;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.login-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-field {
+    display: flex;
+    align-items: center;
+    margin-left: 1.5rem;
+}
+
+.input-container {
+    display: flex;
+    justify-content: center;
+    border: 2px solid #ffb12c;
+    border-radius: 16px 16px 16px 16px;
+    color: #000000;
+}
+
+.input {
+    width: 95%;
+    border: none;
+    background-color: transparent;
+}
+
+.pwIcon {
+    margin-left: 0.5rem;
+}
+
+.input {
+    width: 90%;
+}
+
+.input::placeholder {
+    font-family: 'Poppins', Helvetica, Arial, Lucida, sans-serif;
+    font-weight: 800;
+    color: black;
+    opacity: 1;
+}
+
+.input:focus {
+    outline: none;
+}
+
+.loginBttnInvalid {
+    color: #ffb12c;
+    border: 2px solid #ffb12c;
+    border-radius: 16px 16px 16px 16px;
+    background-color: transparent;
+    width: 5rem;
+    height: 2rem;
+    font-weight: 600;
+}
+
+.loginBttnInvalid:hover {
+    color: #b90404;
+    border: 2px solid #B90404FF;
+}
+
+.loginBttn {
+    color: #ffb12c;
+    border: 2px solid #ffb12c;
+    border-radius: 16px 16px 16px 16px;
+    background-color: transparent;
+    width: 5rem;
+    height: 2rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.loginBttn:hover {
+    color: #ffb12c;
+    border: 2px solid #ffb12c;
+}
+
+.layout {
+    font-family: 'Poppins', Helvetica, Arial, Lucida, sans-serif;
+    color: #000000;
+}
+
+.go-to-register {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.go-to-register p {
+    font-weight: 600;
+}
+
+.register-link {
+    color: #ffb12c;
+    font-weight: 600;
+}
+
+.header {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+
+}
+
+/* desktop */
+@media only screen and (min-device-width: 1400px) {
+    .layout {
+        margin-top: 2.5rem;
+    }
+
+    .header {
+        margin-bottom: 1.5rem;
+    }
+
+    .input-container {
+        width: 25rem;
+        height: 2.5rem;
+    }
+
+    .login-input {
+        margin-bottom: 0.5rem;
+    }
+
+    .loginBttn {
+        margin-top: 1rem;
+    }
+
+    .go-to-register {
+        margin-top: 2rem;
+    }
+
+    .register-link {
+        margin-top: 0.5rem;
+    }
+}
+
+/* portrait phones */
+@media only screen and (min-device-width: 280px) and (max-device-width: 540px) {
+    .layout {
+        margin-top: 2rem;
+    }
+
+    .header {
+        margin-bottom: 1rem;
+    }
+
+    .login-input {
+        margin-bottom: 0.5rem;
+    }
+
+    .input-container {
+        width: 15rem;
+        height: 2.5rem;
+    }
+
+    .loginBttn {
+        margin-top: 1rem;
+    }
+
+    .go-to-register {
+        margin-top: 2rem;
+    }
+
+    .register-link {
+        margin-top: 0.5rem;
+        color: #ffb12c;
+    }
+}
+
+/* landscape phones */
+@media only screen and (min-device-width: 653px) and (max-device-height: 540px) {
+    .header {
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+    }
+
+    .login-input {
+        margin-bottom: 0.5rem;
+    }
+
+    .input-container {
+        width: 20rem;
+        height: 2.5rem;
+    }
+
+    .loginBttn {
+        margin-top: 0.5rem;
+    }
+
+    .go-to-register {
+        margin-top: 2rem;
+    }
+
+    .register-link {
+        margin-top: 0.5rem;
+        color: #ffb12c;
+    }
+}
+
+/* portrait tablets */
+@media only screen and (min-device-height: 1024px) and (max-device-width: 912px) {
+    .layout {
+        margin-top: 5rem;
+    }
+
+    .header {
+        margin-bottom: 1rem;
+    }
+
+    .login-input {
+        margin-bottom: 0.5rem;
+    }
+
+    .input-container {
+        width: 20rem;
+        height: 2.5rem;
+    }
+
+    .loginBttn {
+        margin-top: 1rem;
+    }
+
+    .go-to-register {
+        margin-top: 2rem;
+    }
+
+    .register-link {
+        margin-top: 0.5rem;
+        color: #ffb12c;
+    }
+}
+
+/* landscape tablets */
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1368px) {
+    .layout {
+        margin-top: 5rem;
+    }
+
+    .header {
+        margin-bottom: 1rem;
+    }
+
+    .login-input {
+        margin-bottom: 0.5rem;
+    }
+
+    .input-container {
+        width: 25rem;
+        height: 2.5rem;
+    }
+
+    .loginBttn {
+        margin-top: 1rem;
+    }
+
+    .go-to-register {
+        margin-top: 2rem;
+    }
+
+    .register-link {
+        margin-top: 0.5rem;
+        color: #ffb12c;
+    }
+}
+
+/* fold portrait  */
+@media only screen and (min-device-width: 280px) and (max-device-width: 280px) {
+    .login {
+        width: 90%;
+    }
+}

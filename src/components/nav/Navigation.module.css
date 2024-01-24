@@ -12,18 +12,16 @@
 }
 
 .mobile {
-
+    display: none;
 }
 
 /* desktop */
 @media (min-width: 1400px) {
-    .mobile {
-        display: none;
-    }
+
 }
 
 /* not desktop */
-@media (max-width: 1400px) {
+@media (max-width: 1024px) {
     .desktop {
         display: none;
     }
@@ -31,25 +29,51 @@
 
 /* portrait phones */
 @media only screen and (min-device-width: 280px) and (max-device-width: 540px) {
+    .desktop {
+        display: none;
+    }
 
+    .mobile {
+        display: flex;
+    }
 }
 
 /* landscape phones */
 @media only screen and (min-device-width: 653px) and (max-device-width: 915px) {
+    .desktop {
+        display: none;
+    }
 
+    .mobile {
+        display: flex;
+    }
 }
 
 /* portrait tablets */
 @media only screen and (min-device-height: 1024px) and (max-device-width: 915px) {
+    .desktop {
+        display: none;
+    }
 
+    .mobile {
+        display: flex;
+    }
 }
 
 /* landscape tablets */
 @media only screen and (min-device-width: 1024px) and (max-device-width: 1368px) {
-
+    .mobile {
+        display: none;
+    }
 }
 
 /* fold portrait  */
 @media only screen and (min-device-width: 280px) and (max-device-width: 280px) {
+    .desktop {
+        display: none;
+    }
 
+    .mobile {
+        display: flex;
+    }
 }

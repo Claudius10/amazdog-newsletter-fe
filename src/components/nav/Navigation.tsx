@@ -1,14 +1,31 @@
 import styles from "./Navigation.module.css";
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import MobileButton from "../layout/MobileButton/MobileButton";
 import MenuIcon from "../../resources/Icons/menu.png";
-
+import loginIcon from "../../resources/Icons/login.png";
+import loggedInIcon from "../../resources/Icons/loggedin.png";
 
 // el componente Navigation está usado dentro del componente Header
 // y representa la navigación tanto en desktop como en dispositivos móviles para cambiar de componentes
 // no le hace falta props
 
 const Navigation = () => {
+    const navigate = useNavigate();
+
+    let accountIcon;
+    if (localStorage.getItem("ACCESS_TOKEN") !== null) {
+        accountIcon = loggedInIcon;
+    } else {
+        accountIcon = loginIcon;
+    }
+
+    const authNavigate = () => {
+        if (localStorage.getItem("ACCESS_TOKEN") !== null) {
+            navigate("/profile");
+        } else {
+            navigate("/authentication");
+        }
+    };
 
     // la variable declarada con const (constant "constante", las variables en javascript pueden set declaradas con let o const,
     // si son const no pueden ser reasignadas otro valor a partir de su valor inicial)
@@ -23,6 +40,13 @@ const Navigation = () => {
             <NavLink to={"/noticias"}>Noticias</NavLink>
             <NavLink to={"/estadísticas"}>Estadísticas</NavLink>
             <NavLink to={"/contacto"}>Contacto</NavLink>
+            <MobileButton
+                name={"account-or-auth-navigation-button"}
+                action={authNavigate}
+                icon={accountIcon}
+                height={"32px"}
+                width={"auto"}
+                alt={"Navigate to login page or profile page"}/>
         </nav>
     );
 
