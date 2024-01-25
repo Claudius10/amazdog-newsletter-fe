@@ -12,3 +12,6 @@ export const charsAndNumbersRegex = /^[a-z0-9.,:;\s]+$/gmi;
 export const esCharsAndNumbersAndBasicSymbolsRgx = /^[a-z0-9!¡¿?.,\sÁÉÍÓÚáéíóúÑñ]+$/gmi;
 //  RFC2822 email regex
 export const emailRgx = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/gmi;
+
+// Minimum eight characters, at least one uppercase letter, one lowercase letter and one number:
+export const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;

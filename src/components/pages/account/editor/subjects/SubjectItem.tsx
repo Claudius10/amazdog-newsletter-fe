@@ -1,8 +1,8 @@
-import {SubjectDTO} from "../../../../../utils/api/dtos/chart";
+import {Subject} from "../../../../../utils/dto/statistics";
 
 type Props = {
     subject: string;
-    onSelectedSubject: (subject: SubjectDTO) => void;
+    onSelectedSubject: (subject: Subject) => void;
 }
 
 const SubjectItem = (props: Props) => {

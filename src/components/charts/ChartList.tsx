@@ -8,14 +8,15 @@ import useModal from "../hooks/useModal";
 import {ApiErrorDTO} from "../../utils/api/dtos/api";
 import ApiError from "../layout/modal-contents/ApiError";
 import Modal from "../hooks/Modal";
-import {ChartDTO, SubjectDTO} from "../../utils/api/dtos/chart";
+import {ChartDTO} from "../../utils/api/dtos/chart";
 import SubjectList from "../pages/account/editor/subjects/SubjectList";
 import {useNavigate} from "react-router-dom";
+import {Subject} from "../../utils/dto/statistics";
 
 const ChartList = () => {
     const {isModalOpen, openModal, modalContent, closeModal} = useModal();
     const [showForm, setShowForm] = useState<boolean>(false);
-    const [subjects, setSubjects] = useState<SubjectDTO[]>([]);
+    const [subjects, setSubjects] = useState<Subject[]>([]);
     const [subjectsLength, setSubjectsLength] = useState(0);
     const queryClient = useQueryClient();
     const navigate = useNavigate();
@@ -73,7 +74,7 @@ const ChartList = () => {
         }
     };
 
-    const onSelectedSubject = (subject: SubjectDTO) => {
+    const onSelectedSubject = (subject: Subject) => {
         const index = subjects.findIndex((item) => item.name === subject.name);
         if (index !== -1) {
             subjects.splice(index, 1);

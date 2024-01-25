@@ -18,11 +18,6 @@ const Account = () => {
                             </NavLink>
                         </li>}
                     <li>
-                        <NavLink to={"preferences"}>
-                            <span className={styles.text}>Preferencias</span>
-                        </NavLink>
-                    </li>
-                    <li>
                         <NavLink to={"settings"}>
                             <span className={styles.text}>Configuración</span>
                         </NavLink>

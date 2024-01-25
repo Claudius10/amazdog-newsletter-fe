@@ -1,48 +1,31 @@
 import styles from "./Charts.module.css";
 import {
     BarElement,
-    PointElement,
     CategoryScale,
     Chart as ChartJS,
     Legend,
-    LinearScale, LineElement,
+    LinearScale,
     Title,
-    Tooltip, ArcElement,
+    Tooltip,
 } from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
-import {Bar, Line, Doughnut} from 'react-chartjs-2';
+import {Bar} from 'react-chartjs-2';
 import {NavLink} from "react-router-dom";
-import {Dataset, Statistic} from "../../utils/types";
+import {ChartProps, Dataset} from "../../../utils/dto/chart";
+import {Statistic} from "../../../utils/dto/statistics";
 
 ChartJS.register(
     CategoryScale,
     LinearScale,
     BarElement,
-    LineElement,
-    ArcElement,
-    PointElement,
     Title,
     Tooltip,
     Legend,
     ChartDataLabels
 );
 
-type Props = {
-    dataset: Dataset[],
-    source: string;
-    title: string;
-    type: string;
-}
-
-export const Chart = (props: Props) => {
-
+const BarChart = (props: ChartProps) => {
     const options = {
-        clip: false,
-        layout: {
-            padding: {
-                top: 25
-            }
-        },
         responsive: true,
         maintainAspectRatio: false,
         plugins: {
@@ -57,8 +40,8 @@ export const Chart = (props: Props) => {
                     return statistic.value;
                 },
                 color: 'black',
-                align: 'top' as const,
-                anchor: 'end' as const,
+                align: 'center' as const,
+                anchor: 'center' as const,
                 font: {
                     weight: 600,
                 },
@@ -66,14 +49,8 @@ export const Chart = (props: Props) => {
             tooltip: {
                 callbacks: {
                     label: function (context: any) {
-                        let value;
-                        if (props.type === "Bar") {
-                            value = context.parsed.y;
-                        } else {
-                            value = context.parsed;
-                        }
-                        if (!Number.isInteger(value)) {
-                            return `${context.dataset.label}: ${(value * 100).toFixed(0) + "%"}`;
+                        if (!Number.isInteger(context.parsed.y)) {
+                            return `${context.dataset.label}: ${(context.parsed.y * 100).toFixed(0) + "%"}`;
                         }
                     }
                 }
@@ -110,56 +87,38 @@ export const Chart = (props: Props) => {
     };
 
     let labels: string[] = [];
+    let tags: string[] = [];
     props.dataset.forEach((dataset: Dataset) => {
         dataset.data.forEach((statistic: Statistic) => {
-                if (props.type === "Doughnut") {
-                    if (!labels.includes(statistic.label)) {
-                        labels.push(statistic.label);
-                    }
-                } else {
-
-                    if (!labels.includes(statistic.date)) {
-                        labels.push(statistic.date);
-                    }
+                if (!labels.includes(statistic.date)) {
+                    labels.push(statistic.date);
                 }
 
-
+                let tempTags = statistic.tags.split(', ');
+                tempTags.forEach((tag) => {
+                    if (!tags.includes(tag)) {
+                        tags.push(tag);
+                    }
+                });
             }
         );
     });
-    console.log("datasetArray");
-    console.log(props.dataset);
-    const data = {
-        labels,
-        datasets: props.dataset
-    };
-    const sourceLink = props.dataset[0].data[0].source;
-    const source = props.source;
-    const tags = props.dataset[0].data[0].tags.split(', ');
 
-    const getChart = (type: string, options: any, data: any) => {
-        switch (type) {
-            case "Bar":
-                return <Bar options={options} data={data}/>;
-            case "Line":
-                return <Line options={options} data={data}/>;
-            case "Doughnut":
-                return <Doughnut options={options} data={data}/>;
-        }
-    };
+    const data = {labels, datasets: props.dataset};
+    const sourceLink = props.dataset[0].data[0].source;
 
     return (
         <div className={styles.border}>
             <div className={styles.chartContainer}>
                 <p className={styles.title}>{props.title}</p>
-                {getChart(props.type, options, data)}
+                <Bar options={options} data={data}/>
                 <div className={styles.info}>
-                    <NavLink to={sourceLink}>
-                        Fuente: {source}
-                    </NavLink>
+                    <NavLink to={sourceLink}>Fuente</NavLink>
                     <p>Tags: {tags.map((item, index) => <span key={index}>{(index ? ', ' : '') + item}</span>)}
                     </p>
                 </div>
             </div>
         </div>);
 };
+
+export default BarChart;

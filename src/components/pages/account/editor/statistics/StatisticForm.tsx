@@ -1,8 +1,8 @@
 import {useForm} from "react-hook-form";
-import {Statistic} from "../../../../../utils/types";
 import styles from "../../../../charts/ChartList.module.css";
 import {useMutation} from "@tanstack/react-query";
 import {createStatistic} from "../../../../../utils/api/statistics-api";
+import {Statistic} from "../../../../../utils/dto/statistics";
 
 type Props = {
     refetch?: () => void

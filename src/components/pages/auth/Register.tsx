@@ -7,7 +7,7 @@ import {RegisterDTO} from "../../../utils/api/dtos/auth";
 import {useMutation} from "@tanstack/react-query";
 import {ApiErrorDTO} from "../../../utils/api/dtos/api";
 import {registerFn} from "../../../utils/api/auth-api";
-import {emailRgx, esCharsRegex} from "../../../utils/regex";
+import {emailRgx, esCharsRegex, passwordRegex} from "../../../utils/regex";
 import CircleIcon from "../../layout/CircleIcon";
 import useModal from "../../hooks/useModal";
 import Modal from "../../hooks/Modal";
@@ -130,7 +130,11 @@ const Register = () => {
                                 autoComplete={"new-password"}
                                 placeholder={"Contraseña"}
                                 {...register("password", {
-                                    required: {value: true, message: "La contraseña no puede faltar"}
+                                    required: {value: true, message: "La contraseña no puede faltar"},
+                                    pattern: {
+                                        value: passwordRegex,
+                                        message: "Mínimo 8 caracteres, una letra mayúscula, una letra minúscula, y un número"
+                                    }
                                 })}
                             />
                         </div>

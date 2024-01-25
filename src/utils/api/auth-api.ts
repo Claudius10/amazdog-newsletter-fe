@@ -1,5 +1,4 @@
 import {LoginDTO, LoginSuccessDTO, RegisterDTO} from "./dtos/auth";
-import Login from "../../components/pages/auth/Login";
 
 export const registerFn = async (data: RegisterDTO) => {
     const response = await fetch(`${process.env.REACT_APP_ANON_API}/register`, {

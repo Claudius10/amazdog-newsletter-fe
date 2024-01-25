@@ -1,8 +1,8 @@
-import {Statistic} from "../types";
 import {QueryOptions} from "@tanstack/react-query";
+import {StatisticDTO} from "./dtos/statistics";
 
-export const createStatistic = async (statistic: Statistic) => {
-    const createStatisticFn = async (statistic: Statistic) => {
+export const createStatistic = async (statistic: StatisticDTO) => {
+    const createStatisticFn = async (statistic: StatisticDTO) => {
         const response = await fetch(`${process.env.REACT_APP_STATISTICS_API}`, {
             method: "POST",
             body: JSON.stringify(statistic),

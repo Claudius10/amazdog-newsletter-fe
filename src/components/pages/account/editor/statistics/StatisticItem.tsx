@@ -1,4 +1,3 @@
-import {Statistic} from "../../../../../utils/types";
 import {useMutation, useQuery} from "@tanstack/react-query";
 import {deleteById, findAllBySubject} from "../../../../../utils/api/statistics-api";
 import {ApiErrorDTO} from "../../../../../utils/api/dtos/api";
@@ -9,6 +8,7 @@ import {useSearchParams} from "react-router-dom";
 import {useState} from "react";
 import StatisticForm from "./StatisticForm";
 import PaginationStatistics from "./PaginationStatistics";
+import {Statistic} from "../../../../../utils/dto/statistics";
 
 const StatisticItem = () => {
     const {isModalOpen, openModal, modalContent, closeModal} = useModal();

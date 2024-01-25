@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {findAllNews} from "../../../../../utils/api/news-api";
+import {deleteNewsById, findAllNews} from "../../../../../utils/api/news-api";
 import {useSearchParams} from "react-router-dom";
 import {useMutation, useQuery} from "@tanstack/react-query";
 import {NewsDTO} from "../../../../../utils/api/dtos/news";
@@ -23,9 +23,17 @@ const NewsList = () => {
         }
     );
 
-    const removeNews = useMutation({});
+    const removeNews = useMutation({
+        mutationFn: deleteNewsById,
+        onSuccess: async () => {
+            await refetch();
+        },
+        onError: () => {
+        }
+    });
 
     const onDeleteConfirm = (id: number) => {
+        removeNews.mutate(id);
     };
 
     let totalPages;
@@ -56,7 +64,6 @@ const NewsList = () => {
         {content}
         <button onClick={toggleForm}>Añadir</button>
         {showForm && <NewsForm refetch={refetch} toggleForm={toggleForm}/>}
-        <p>Noticias a generar</p>
         <PaginationSubject totalPages={totalPages} queryKey={["news", "all"]} queryFn={findAllNews}/>
     </div>;
 };

@@ -8,16 +8,14 @@ import Register from "./pages/auth/Register";
 import ActivateAccount from "./pages/auth/ActivateAccount";
 import Account from "./pages/account/nav/Account";
 import Profile from "./pages/account/general/Profile";
-import Preferences from "./pages/account/general/Preferences";
-import Settings from "./pages/account/general/Settings";
+import Settings from "./pages/account/settings/Settings";
 import EditorNav from "./pages/account/editor/EditorNav";
-import Charts from "./pages/account/editor/charts/Charts";
 import StatisticItem from "./pages/account/editor/statistics/StatisticItem";
 import NewsPage from "./pages/NewsPage";
 import NewsList from "./pages/account/editor/news/NewsList";
 import StatisticList from "./pages/account/editor/statistics/StatisticList";
-import NewsEntry from "./pages/account/editor/news/NewsEntry";
 import NewsItem from "./pages/account/editor/news/NewsItem";
+import ChartsPage from "./pages/account/editor/charts/ChartsPage";
 
 // este es el componente de Rutas en que React Router nos permite activar un componente para una ruta específica que está presente en el navegador
 // por ejemplo cuando la ruta amazdog-newsletter.com/noticias está en el navegador, entonces el componente NewsList está activó (aparece en la pantalla)
@@ -45,7 +43,6 @@ const Routes = () => {
 
             <Route path={"/profile"} element={<Account/>}>
                 <Route index element={<Profile/>}/>
-                <Route path={"preferences"} element={<Preferences/>}/>
                 <Route path={"settings"} element={<Settings/>}/>
             </Route>
 
@@ -53,7 +50,7 @@ const Routes = () => {
                 <Route index element={<StatisticList/>}/>
                 <Route path={"statistics"} element={<StatisticList/>}/>
                 <Route path={"statistics/subject"} element={<StatisticItem/>}/>
-                <Route path={"charts"} element={<Charts/>}/>
+                <Route path={"charts"} element={<ChartsPage/>}/>
                 <Route path={"news"} element={<NewsList/>}/>
                 <Route path={"news/:id"} element={<NewsItem/>}/>
             </Route>

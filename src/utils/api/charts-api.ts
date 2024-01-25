@@ -1,4 +1,4 @@
-import {ChartData, ChartDTO, SubjectDTO} from "./dtos/chart";
+import {ChartDataDTO, ChartDTO} from "./dtos/chart";
 
 export const createChart = async (chart: ChartDTO) => {
     const createChartFn = async (chart: ChartDTO) => {
@@ -47,7 +47,7 @@ export const findAllChartData = async () => {
         if (!response.ok) {
             throw await response.json();
         } else {
-            return await response.json() as Promise<ChartData[]>;
+            return await response.json() as Promise<ChartDataDTO[]>;
         }
     };
 
@@ -76,51 +76,3 @@ export const deleteChart = async (chartId: number) => {
     // ...
     return await deleteChartFn(chartId);
 };
-
-export const addSubject = async (chartId: number, subject: SubjectDTO) => {
-    const addSubjectFn = async (chartId: number, subject: SubjectDTO) => {
-        const response = await fetch(`${process.env.REACT_APP_CHARTS_API}/${chartId}/subject`, {
-            method: "POST",
-            body: JSON.stringify(subject),
-            headers: {
-                "Authorization": `Bearer ${localStorage.getItem("ACCESS_TOKEN")}`,
-                "Content-Type": "application/json"
-            }
-        });
-
-        if (!response.ok) {
-            throw await response.json();
-        } else {
-            return await response.text();
-        }
-    };
-
-    // check if access token expired
-    // ...
-    return await addSubjectFn(chartId, subject);
-};
-
-export const deleteSubject = async (chartId: number, subject: SubjectDTO) => {
-    const deleteSubjectFn = async (chartId: number, subject: SubjectDTO) => {
-        const response = await fetch(`${process.env.REACT_APP_CHARTS_API}/${chartId}/subject`, {
-            method: "DELETE",
-            body: JSON.stringify(subject),
-            headers: {
-                "Authorization": `Bearer ${localStorage.getItem("ACCESS_TOKEN")}`,
-                "Content-Type": "application/json"
-            }
-        });
-
-        if (!response.ok) {
-            throw await response.json();
-        } else {
-            return await response.text();
-        }
-    };
-
-    // check if access token expired
-    // ...
-    return await deleteSubjectFn(chartId, subject);
-};
-
-

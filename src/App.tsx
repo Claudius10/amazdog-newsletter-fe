@@ -4,9 +4,11 @@ import {RouterProvider} from "react-router-dom";
 import Routes from "./components/Routes";
 import {ReactQueryDevtools} from '@tanstack/react-query-devtools';
 
-// TODO - LOW Show Text warning of: if a ChartData has a subject whose statistics have been all deleted, also delete the subject from the ChartData
-// TODO - LOW show text warning that charts at /estadísticas public page only refresh with tab refresh
-// TODO - LOW add/remove subject to chart
+// TODO - Add password reset functionality
+// TODO - Add jwt expiration check for api calls
+// TODO - Define all onSuccess/onError for Mutations
+// TODO - Add warning to only have one dataset per doughnut chart
+// TODO - Desktop and mobile styling
 
 function App() {
 

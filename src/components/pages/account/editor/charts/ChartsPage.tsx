@@ -1,9 +1,9 @@
 import ChartList from "../../../../charts/ChartList";
 
-const Charts = () => {
+const ChartsPage = () => {
     return <div>
         <ChartList/>
     </div>;
 };
 
-export default Charts;
+export default ChartsPage;

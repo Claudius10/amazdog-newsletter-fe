@@ -1,19 +1,15 @@
-import {Statistic} from "../../types";
+import {Subject} from "../../dto/statistics";
+import {StatisticDTO} from "./statistics";
 
 export type ChartDTO = {
     id: number;
     title: string;
     type: string;
-    subjects: SubjectDTO[];
+    subjects: Subject[];
 }
 
-export type SubjectDTO = {
-    id: number | undefined;
-    name: string;
-}
-
-export type ChartData = {
+export type ChartDataDTO = {
     title: string;
     type: string;
-    statisticList: Statistic[][];
+    statisticList: StatisticDTO[][];
 }

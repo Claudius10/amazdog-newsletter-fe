@@ -62,7 +62,6 @@ const StatisticList = () => {
         content = <p>No se encontró nada</p>;
         totalPages = 0;
     } else if (subjects.isSuccess) {
-        console.log(subjects.data);
         totalPages = subjects.data.totalPages;
         content = subjects.data.content.map((subject: string, index: number) =>
             <div key={index}>

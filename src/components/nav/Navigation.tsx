@@ -39,7 +39,6 @@ const Navigation = () => {
         <nav className={styles.desktop}>
             <NavLink to={"/noticias"}>Noticias</NavLink>
             <NavLink to={"/estadísticas"}>Estadísticas</NavLink>
-            <NavLink to={"/contacto"}>Contacto</NavLink>
             <MobileButton
                 name={"account-or-auth-navigation-button"}
                 action={authNavigate}

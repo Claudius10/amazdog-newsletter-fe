@@ -1,12 +1,12 @@
 import {useQuery} from "@tanstack/react-query";
 import {findAllSubjects} from "../../../../../utils/api/statistics-api";
 import SubjectItem from "./SubjectItem";
-import {SubjectDTO} from "../../../../../utils/api/dtos/chart";
 import {useSearchParams} from "react-router-dom";
 import PaginationChartSubjects from "../charts/PaginationChartSubjects";
+import {Subject} from "../../../../../utils/dto/statistics";
 
 type Props = {
-    onSelectedSubject: (subject: SubjectDTO) => void;
+    onSelectedSubject: (subject: Subject) => void;
 }
 
 const SubjectList = (props: Props) => {
