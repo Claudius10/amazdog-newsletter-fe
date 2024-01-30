@@ -3,6 +3,10 @@ import {useMutation} from "@tanstack/react-query";
 import {useFieldArray, useForm} from "react-hook-form";
 import {NewsDTO} from "../../../../../utils/api/dtos/news";
 import styles from "../../../../charts/ChartList.module.css";
+import {ApiErrorDTO} from "../../../../../utils/api/dtos/api";
+import ApiError from "../../../../layout/modal-contents/ApiError";
+import useModal from "../../../../hooks/useModal";
+import Modal from "../../../../hooks/Modal";
 
 type Props = {
     refetch?: () => void
@@ -10,7 +14,7 @@ type Props = {
 }
 
 const NewsForm = (props: Props) => {
-
+    const {isModalOpen, openModal, modalContent, closeModal} = useModal();
     const {handleSubmit, register, reset, formState: {errors, isValid}, control} = useForm<NewsDTO>({
         mode: "onBlur",
         reValidateMode: "onBlur",
@@ -29,6 +33,9 @@ const NewsForm = (props: Props) => {
             }
             reset();
             props.toggleForm();
+        },
+        onError: (error: ApiErrorDTO) => {
+            openModal(<ApiError errorMsg={error.errorMsg} closeModal={closeModal}/>);
         }
     });
 
@@ -36,8 +43,7 @@ const NewsForm = (props: Props) => {
         createNewsHandler.mutate(data);
     };
 
-
-    return <form onSubmit={handleSubmit(onSubmitHandler)}>
+    const form = <form onSubmit={handleSubmit(onSubmitHandler)}>
         <span>Título: </span>
         <input
             id="title"
@@ -129,6 +135,11 @@ const NewsForm = (props: Props) => {
         <p className={styles.error}>{errors.link?.message}</p>
         <button type={"submit"} disabled={!isValid}>Finalizar</button>
     </form>;
+
+    return <>
+        <Modal content={modalContent} show={isModalOpen} hide={closeModal}/>
+        {form}
+    </>;
 };
 
 export default NewsForm;

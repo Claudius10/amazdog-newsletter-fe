@@ -1,0 +1,104 @@
+.layout {
+    text-align: center;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: #ffb12c 0 3px 6px, rgba(0, 0, 0, 0.23) 0 3px 6px;
+}
+
+.imgContainer {
+    overflow: hidden;
+    display: flex;
+}
+
+.imgContainer img {
+    max-width: inherit;
+    max-height: inherit;
+    height: inherit;
+    width: inherit;
+    object-fit: cover;
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    margin: 1rem 0.5rem 1rem 0.5rem;
+}
+
+.title {
+    font-weight: bold;
+}
+
+.text {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    font-size: 12px;
+}
+
+/* desktop */
+@media (min-width: 1400px) {
+    .layout {
+        width: 20vw;
+    }
+
+    .imgContainer {
+        width: 20vw;
+        height: 25vh;
+    }
+}
+
+/* not desktop */
+@media (max-width: 1400px) {
+}
+
+/* portrait phones */
+@media only screen and (min-device-width: 280px) and (max-device-width: 540px) {
+    .layout {
+        width: 90vw;
+    }
+
+    .imgContainer {
+        width: 90vw;
+        height: 25vh;
+    }
+}
+
+/* landscape phones */
+@media only screen and (min-device-width: 653px) and (max-device-width: 932px) {
+    .layout {
+        width: 40vw;
+    }
+
+    .imgContainer {
+        width: 40vw;
+        height: 45vh;
+    }
+}
+
+/* portrait tablets */
+@media only screen and (min-device-height: 1024px) and (max-device-width: 915px) {
+    .layout {
+        width: 40vw;
+    }
+
+    .imgContainer {
+        width: 40vw;
+        height: 20vh;
+    }
+}
+
+/* landscape tablets */
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1368px) {
+    .layout {
+        width: 40vw;
+    }
+
+    .imgContainer {
+        width: 40vw;
+        height: 30vh;
+    }
+}
+

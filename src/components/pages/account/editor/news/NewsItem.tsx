@@ -30,6 +30,9 @@ const NewsItem = () => {
             await queryClient.refetchQueries({queryKey: ["news", "all"]});
             await queryClient.refetchQueries({queryKey: ["news", "active"]});
             await newsItem.refetch();
+        },
+        onError: (error: ApiErrorDTO) => {
+            openModal(<ApiError errorMsg={error.errorMsg} closeModal={closeModal}/>);
         }
     });
 
@@ -39,7 +42,7 @@ const NewsItem = () => {
 
     const changeState = (id: number) => {
         let state;
-        if (newsItem.isSuccess && newsItem.data.active) {
+        if (newsItem.isSuccess && newsItem.data?.active) {
             state = false;
         } else {
             state = true;
@@ -55,36 +58,40 @@ const NewsItem = () => {
         newsList = <p>Ocurrió un error. Por favor, inténtelo más tarde.</p>;
     } else if (newsItem.isSuccess) {
 
-        if (newsItem.data.active) {
+        if (newsItem.data?.active) {
             stateBttn = "Desactivar";
         } else {
             stateBttn = "Activar";
         }
 
         newsList =
-            <div key={newsItem.data.id}>
-                <p>Título: {newsItem.data.title}</p>
-                <p>Autor: {newsItem.data.author}</p>
-                <p>Texto: {newsItem.data.text}</p>
-                <p>Imagen principal: {newsItem.data.mainImage}</p>
+            <div key={newsItem.data?.id}>
+                <p>Título: {newsItem.data?.title}</p>
+                <p>Autor: {newsItem.data?.author}</p>
+                <p>Texto: {newsItem.data?.text}</p>
+                <p>Imagen principal: {newsItem.data?.mainImage}</p>
                 <p>Galería imágenes:</p>
                 <div>
-                    {newsItem.data.images.map((item: any, index: number) =>
+                    {newsItem.data?.images.map((item: any, index: number) =>
                         <div key={index}>
                             <p>Nombre: {item.imageName}</p>
                             <p>Enlace: {item.imageLink}</p>
                         </div>
                     )}
                 </div>
-                <p>Palabras clave: {newsItem.data.keywords}</p>
-                <p>Enlace: {newsItem.data.link}</p>
-                <p>Fecha creación: {newsItem.data.createdOn}</p>
-                <p>Estado: {`${newsItem.data.active}`}</p>
+                <p>Palabras clave: {newsItem.data?.keywords}</p>
+                <p>Enlace: {newsItem.data?.link}</p>
+                <p>Fecha creación: {newsItem.data?.createdOn}</p>
+                <p>Estado: {`${newsItem.data?.active}`}</p>
                 <button onClick={() => {
-                    changeState(newsItem.data.id);
+                    if (newsItem.data !== undefined) {
+                        changeState(newsItem.data.id);
+                    }
                 }}>{stateBttn}</button>
                 <button onClick={() => {
-                    deleteHandler(newsItem.data.id);
+                    if (newsItem.data !== undefined) {
+                        deleteHandler(newsItem.data.id);
+                    }
                 }}>Eliminar
                 </button>
             </div>;

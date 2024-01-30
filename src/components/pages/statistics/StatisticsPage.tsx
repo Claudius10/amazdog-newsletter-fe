@@ -22,7 +22,9 @@ const StatisticsPage = () => {
     }
 
     return <div className={styles.layout}>
-        {content}
+        <div className={styles.rows}>
+            {content}
+        </div>
     </div>;
 
 };

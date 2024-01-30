@@ -1,5 +1,4 @@
 .layout {
-    margin-top: 2rem;
     display: flex;
     justify-content: center;
 }
@@ -8,14 +7,17 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 5rem;
-    row-gap: 3rem;
+    list-style: none;
+    margin-top: 2rem;
 }
+
 
 /* desktop */
 @media (min-width: 1400px) {
     .rows {
         width: 75%;
+        gap: 5rem;
+        row-gap: 3rem;
     }
 }
 
@@ -27,26 +29,31 @@
 @media only screen and (min-device-width: 280px) and (max-device-width: 540px) {
     .rows {
         flex-direction: column;
+        align-items: center;
+        gap: 3rem;
     }
 }
 
 /* landscape phones */
 @media only screen and (min-device-width: 653px) and (max-device-width: 932px) {
-
+    .rows {
+        flex-direction: row;
+        gap: 3rem;
+    }
 }
 
 /* portrait tablets */
 @media only screen and (min-device-height: 1024px) and (max-device-width: 915px) {
-
+    .rows {
+        flex-direction: row;
+        gap: 3rem;
+    }
 }
 
 /* landscape tablets */
 @media only screen and (min-device-width: 1024px) and (max-device-width: 1368px) {
-
+    .rows {
+        flex-direction: row;
+        gap: 3rem;
+    }
 }
-
-/* fold portrait  */
-@media only screen and (min-device-width: 280px) and (max-device-width: 280px) {
-
-}
-

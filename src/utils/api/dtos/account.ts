@@ -4,6 +4,11 @@ export type PasswordChangeDTO = {
     matchingNewPassword: string;
 }
 
+export type PasswordResetDTO = {
+    newPassword: string;
+    matchingNewPassword: string;
+}
+
 export type NameChangeDTO = {
     name: string;
     password: string;

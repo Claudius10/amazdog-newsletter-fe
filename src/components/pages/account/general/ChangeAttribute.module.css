@@ -1,0 +1,72 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: #ffb12c 0 3px 6px, rgba(0, 0, 0, 0.23) 0 3px 6px;
+}
+
+.attribute {
+    font-weight: 600;
+    color: #ffb12c;
+    margin-top: 1rem;
+}
+
+.label {
+    font-weight: 600;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    width: 14rem;
+}
+
+.error {
+    color: darkred;
+    font-style: italic;
+    margin-top: 0.5rem;
+}
+
+/* desktop */
+@media (min-width: 1400px) {
+    .form {
+        width: 20vw;
+        gap: 1rem;
+    }
+}
+
+/* not desktop */
+@media (max-width: 1024px) {
+}
+
+/* portrait phones */
+@media only screen and (min-device-width: 280px) and (max-device-width: 540px) {
+    .form {
+        width: 80vw;
+        gap: 1rem;
+    }
+}
+
+/* landscape phones */
+@media only screen and (min-device-width: 653px) and (max-device-width: 932px) {
+    .form {
+        width: 40vw;
+        gap: 1rem;
+    }
+}
+
+/* portrait tablets */
+@media only screen and (min-device-height: 1024px) and (max-device-width: 915px) {
+    .form {
+        width: 40vw;
+        gap: 1rem;
+    }
+}
+
+/* landscape tablets */
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1368px) {
+    .form {
+        width: 30vw;
+        gap: 1rem;
+    }
+}

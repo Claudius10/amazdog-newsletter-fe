@@ -1,3 +1,5 @@
+import styles from "./Settings.module.css";
+import {Button} from "../../../layout/styled";
 import {useNavigate} from "react-router-dom";
 import PasswordChange from "./PasswordChange";
 import DeleteAccount from "./DeleteAccount";
@@ -9,11 +11,11 @@ const Settings = () => {
         navigate("/authentication");
     };
 
-    return <>
-        <button onClick={logoutHandler}>Terminar sesión</button>
+    return <div className={styles.layout}>
+        <Button $height={"3rem"} $width={"19rem"} onClick={logoutHandler}>Terminar sesión</Button>
         <PasswordChange/>
         <DeleteAccount/>
-    </>;
+    </div>;
 };
 
 export default Settings;

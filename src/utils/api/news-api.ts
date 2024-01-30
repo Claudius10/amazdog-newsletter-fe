@@ -1,5 +1,6 @@
 import {NewsDTO} from "./dtos/news";
 import {QueryOptions} from "@tanstack/react-query/build/modern";
+import {keyIsValid} from "../functions";
 
 type StateUpdate = {
     id: number;
@@ -22,9 +23,9 @@ export const createNews = async (news: NewsDTO) => {
         }
     };
 
-    // check if access token expired
-    // ...
-    return await createNewsFn(news);
+    if (keyIsValid()) {
+        return await createNewsFn(news);
+    }
 };
 
 export const findAllNews = async (options: QueryOptions) => {
@@ -51,9 +52,9 @@ export const findAllNews = async (options: QueryOptions) => {
         }
     };
 
-    // check if access token expired
-    // ...
-    return await findAllNewsFn(options);
+    if (keyIsValid()) {
+        return await findAllNewsFn(options);
+    }
 };
 
 export const findNewsById = async (options: QueryOptions) => {
@@ -77,9 +78,9 @@ export const findNewsById = async (options: QueryOptions) => {
         }
     };
 
-    // check if access token expired
-    // ...
-    return await findNewsByIdFn(options);
+    if (keyIsValid()) {
+        return await findNewsByIdFn(options);
+    }
 };
 
 export const findActiveNews = async () => {
@@ -93,9 +94,27 @@ export const findActiveNews = async () => {
         }
     };
 
-    // check if access token expired
-    // ...
     return await findActiveNewsFn();
+};
+
+export const findActiveNewsById = async (options: QueryOptions) => {
+    const findActiveNewsByIdFn = async (options: QueryOptions) => {
+        let id;
+
+        if (options.queryKey) {
+            id = options.queryKey.at(2);
+        }
+
+        const response = await fetch(`${process.env.REACT_APP_RESOURCES_API}/news/active/${id}`);
+
+        if (!response.ok) {
+            throw await response.json();
+        } else {
+            return await response.json() as Promise<NewsDTO>;
+        }
+    };
+
+    return await findActiveNewsByIdFn(options);
 };
 
 export const updateState = async (data: StateUpdate) => {
@@ -113,9 +132,9 @@ export const updateState = async (data: StateUpdate) => {
         }
     };
 
-    // check if access token expired
-    // ...
-    return await updateStateFn(data);
+    if (keyIsValid()) {
+        return await updateStateFn(data);
+    }
 };
 
 
@@ -134,7 +153,7 @@ export const deleteNewsById = async (id: number) => {
         }
     };
 
-    // check if access token expired
-    // ...
-    return await deleteNewsByIdFn(id);
+    if (keyIsValid()) {
+        return await deleteNewsByIdFn(id);
+    }
 };

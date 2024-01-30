@@ -1,7 +1,9 @@
-.border {
-    border: 1px solid black;
-    height: 45vh;
-    width: 30vw;
+.layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+    box-shadow: #ffb12c 0 0 0 2px, rgba(0, 0, 0, 0.65) 0 4px 6px -1px, rgba(0, 0, 0, 0.08) 0 1px 0 inset;
 }
 
 .chartContainer {
@@ -9,24 +11,43 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 30vw;
-    height: 35vh;
-
 }
 
 .title {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin: 1rem 0.5rem 1rem 0.5rem;
+    font-weight: 600;
+    word-break: break-all;
+    text-align: center;
 }
 
 .info {
-    margin-top: 1rem;
     display: flex;
-    gap: 14.5rem;
+    justify-content: space-between;
+    width: 85%;
+    margin: 1rem 0 1rem 0;
+}
+
+.info a {
+    text-decoration: none;
+    color: #ffb12c;
+    font-weight: 600;
+    border-bottom: 2px solid #ffb12c;
+}
+
+.tags {
+    font-weight: 600;
 }
 
 /* desktop */
 @media (min-width: 1400px) {
+    .layout {
+        width: 30vw;
+    }
+
+    .chartContainer {
+        width: 30vw;
+        height: 46vh;
+    }
 }
 
 /* not desktop */
@@ -36,25 +57,48 @@
 
 /* portrait phones */
 @media only screen and (min-device-width: 280px) and (max-device-width: 540px) {
+    .layout {
+        width: 95vw;
+    }
 
+    .chartContainer {
+        width: 95vw;
+        height: 45vh;
+    }
 }
 
 /* landscape phones */
-@media only screen and (min-device-width: 653px) and (max-device-width: 915px) {
+@media only screen and (min-device-width: 653px) and (max-device-width: 932px) {
+    .layout {
+        width: 70vw;
+    }
 
+    .chartContainer {
+        width: 70vw;
+        height: 80vh;
+    }
 }
 
 /* portrait tablets */
 @media only screen and (min-device-height: 1024px) and (max-device-width: 915px) {
+    .layout {
+        width: 70vw;
+    }
 
+    .chartContainer {
+        width: 70vw;
+        height: 43vh;
+    }
 }
 
 /* landscape tablets */
 @media only screen and (min-device-width: 1024px) and (max-device-width: 1368px) {
+    .layout {
+        width: 70vw;
+    }
 
-}
-
-/* fold portrait  */
-@media only screen and (min-device-width: 280px) and (max-device-width: 280px) {
-
+    .chartContainer {
+        width: 70vw;
+        height: 60vh;
+    }
 }

@@ -6,8 +6,13 @@ import {NewsDTO} from "../../../../../utils/api/dtos/news";
 import NewsForm from "./NewsForm";
 import PaginationSubject from "../subjects/PaginationSubject";
 import NewsEntry from "./NewsEntry";
+import {ApiErrorDTO} from "../../../../../utils/api/dtos/api";
+import ApiError from "../../../../layout/modal-contents/ApiError";
+import Modal from "../../../../hooks/Modal";
+import useModal from "../../../../hooks/useModal";
 
 const NewsList = () => {
+    const {isModalOpen, openModal, modalContent, closeModal} = useModal();
     const [showForm, setShowForm] = useState<boolean>(false);
     const [searchParams] = useSearchParams();
     let pageNumber = searchParams.get("page");
@@ -28,7 +33,8 @@ const NewsList = () => {
         onSuccess: async () => {
             await refetch();
         },
-        onError: () => {
+        onError: (error: ApiErrorDTO) => {
+            openModal(<ApiError errorMsg={error.errorMsg} closeModal={closeModal}/>);
         }
     });
 
@@ -60,6 +66,7 @@ const NewsList = () => {
     }
 
     return <div>
+        <Modal content={modalContent} show={isModalOpen} hide={closeModal}/>
         Lista de noticias
         {content}
         <button onClick={toggleForm}>Añadir</button>

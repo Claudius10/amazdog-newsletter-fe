@@ -1,18 +1,14 @@
 import styled from 'styled-components';
 
-export const Button = styled.button<{ $width?: string, $color?: string }>`
-    height: 1.5rem;
-    width: ${props => props.$width || "fit-content"};
-    padding: 0 0.3rem;
-    border: 1px solid black;
-    color: black;
-    background-color: ${props => props.$color || "#f5cc45"};
-    text-transform: uppercase;
-    font: inherit;
-    font-weight: 800;
-    outline: inherit;
+export const Button = styled.button<{ $margin?: string, $width?: string, $height?: string }>`
+    color: #ffb12c;
+    border: 2px solid #ffb12c;
+    border-radius: 16px 16px 16px 16px;
+    background-color: transparent;
+    width: ${props => props.$width || "5rem"};
+    height: ${props => props.$height || "2rem"};
+    margin: ${props => props.$margin || "0rem"};
+    font-weight: 600;
     cursor: pointer;
-    letter-spacing: 0.5px;
-    &:disabled {
-    background-color: #cecece;
+    font-family: 'Poppins', Helvetica, Arial, Lucida, sans-serif;
     `;

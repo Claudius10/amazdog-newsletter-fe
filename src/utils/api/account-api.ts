@@ -1,4 +1,5 @@
 import {AccountDeleteQuery, EmailUpdateQuery, NameUpdateQuery, PasswordUpdateQuery} from "./dtos/account";
+import {keyIsValid} from "../functions";
 
 export const updatePassword = async (data: PasswordUpdateQuery) => {
     const updatePasswordFn = async (data: PasswordUpdateQuery) => {
@@ -16,8 +17,9 @@ export const updatePassword = async (data: PasswordUpdateQuery) => {
         }
     };
 
-    //await keysCheck();
-    return await updatePasswordFn(data);
+    if (keyIsValid()) {
+        return await updatePasswordFn(data);
+    }
 };
 
 export const updateName = async (data: NameUpdateQuery) => {
@@ -36,8 +38,9 @@ export const updateName = async (data: NameUpdateQuery) => {
         }
     };
 
-    //await keysCheck();
-    return await updateNameFn(data);
+    if (keyIsValid()) {
+        return await updateNameFn(data);
+    }
 };
 
 export const updateEmail = async (data: EmailUpdateQuery) => {
@@ -56,8 +59,9 @@ export const updateEmail = async (data: EmailUpdateQuery) => {
         }
     };
 
-    //await keysCheck();
-    return await updateEmailFn(data);
+    if (keyIsValid()) {
+        return await updateEmailFn(data);
+    }
 };
 
 export const deleteAccount = async (data: AccountDeleteQuery) => {
@@ -76,6 +80,7 @@ export const deleteAccount = async (data: AccountDeleteQuery) => {
         }
     };
 
-    //await keysCheck();
-    return await deleteAccountFn(data);
+    if (keyIsValid()) {
+        return await deleteAccountFn(data);
+    }
 };

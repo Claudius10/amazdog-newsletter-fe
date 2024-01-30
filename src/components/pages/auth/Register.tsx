@@ -12,11 +12,11 @@ import CircleIcon from "../../layout/CircleIcon";
 import useModal from "../../hooks/useModal";
 import Modal from "../../hooks/Modal";
 import RegisterModalContent from "../../layout/modal-contents/RegisterModalContent";
+import ApiError from "../../layout/modal-contents/ApiError";
 
 const Register = () => {
     const {isModalOpen, modalContent, openModal, closeModal} = useModal();
     const [passwordVisibility, setPwVisibility] = useState(true);
-    const [apiError, setApiError] = useState<string | undefined>(undefined);
     const navigate = useNavigate();
     const {
         register,
@@ -34,7 +34,7 @@ const Register = () => {
             openModal(<RegisterModalContent closeModal={closeModal}/>);
         },
         onError: (error: ApiErrorDTO) => {
-            setApiError(error.errorMsg);
+            openModal(<ApiError errorMsg={error.errorMsg} closeModal={closeModal}/>);
         }
     });
 
@@ -187,7 +187,6 @@ const Register = () => {
         <div className={styles.layout}>
             <p className={styles.header}>Crear cuenta</p>
             {formJSX}
-            {registration.isError && <p>{apiError}</p>}
             <div className={styles["go-to-login"]}>
                 <p>¿Ya tienes cuenta?</p>
                 <NavLink to={"/authentication"} className={styles["login-link"]}>Iniciar sesión</NavLink>

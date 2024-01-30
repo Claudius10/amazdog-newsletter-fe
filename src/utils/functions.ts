@@ -19,3 +19,28 @@ export function getRandomInt(min: number, max: number) {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+export const keyIsValid = () => {
+    const date = Date.now();
+    const now = new Date(date);
+
+    const key_expiration = localStorage.getItem("ACCESS_EXP");
+
+    if (key_expiration !== null) {
+        const expiration = new Date(key_expiration);
+
+        if (now > expiration) {
+            localStorage.clear();
+            const logoutBc = new BroadcastChannel("session");
+            logoutBc.postMessage("key-expired");
+            return false;
+        }
+    } else {
+        localStorage.clear();
+        const logoutBc = new BroadcastChannel("session");
+        logoutBc.postMessage("key-expired");
+        return false;
+    }
+
+    return true;
+};

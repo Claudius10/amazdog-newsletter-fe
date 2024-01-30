@@ -1,3 +1,4 @@
+import styles from "../general/ChangeAttribute.module.css";
 import useModal from "../../../hooks/useModal";
 import {useState} from "react";
 import {useMutation} from "@tanstack/react-query";
@@ -6,9 +7,9 @@ import {ApiErrorDTO} from "../../../../utils/api/dtos/api";
 import ApiError from "../../../layout/modal-contents/ApiError";
 import {useForm} from "react-hook-form";
 import {PasswordDTO} from "../../../../utils/api/dtos/account";
-import {useNavigate} from "react-router-dom";
-import styles from "./DeleteAccount.module.css";
 import Modal from "../../../hooks/Modal";
+import OnSuccessModal from "../../../layout/modal-contents/OnSuccessModal";
+import {Button} from "../../../layout/styled";
 
 const DeleteAccount = () => {
     const {isModalOpen, openModal, modalContent, closeModal} = useModal();
@@ -23,7 +24,7 @@ const DeleteAccount = () => {
         mutationFn: deleteAccount,
         onSuccess: () => {
             localStorage.clear();
-            openModal(<OnSuccess closeModal={closeModal}/>);
+            openModal(<OnSuccessModal closeModal={closeModal} redirect={true} text={"Cuenta borrada con éxito"}/>);
         },
         onError: (error: ApiErrorDTO) => {
             openModal(<ApiError errorMsg={error.errorMsg} closeModal={closeModal}/>);
@@ -40,52 +41,31 @@ const DeleteAccount = () => {
     });
 
     const form =
-        <form onSubmit={handleSubmit(onSubmitHandler)}>
-            <p>Borrar cuenta</p>
-            <div>
-                <label htmlFor={"password"}>
-                    Contraseña*
-                </label>
-                <div>
-                    <input
-                        id={"password"}
-                        type={passwordVisibility ? "password" : "text"}
-                        autoComplete={"current-password"}
-                        {...register("password", {
-                            required: {value: true, message: "El valor no puede faltar"}
-                        })}
-                    />
-                </div>
-            </div>
-            <p>{errors.password && errors.password.message}</p>
+        <form className={styles.form} onSubmit={handleSubmit(onSubmitHandler)}>
+            <p className={styles.attribute}>Borrar cuenta</p>
 
-            <div>
-                <button disabled={!isValid} type={"submit"}>Borrar</button>
+            <div className={styles.input}>
+                <input
+                    id={"password"}
+                    type={passwordVisibility ? "password" : "text"}
+                    autoComplete={"current-password"}
+                    placeholder={"Contraseña actual"}
+                    {...register("password", {
+                        required: {value: true, message: "El valor no puede faltar"}
+                    })}
+                />
+                <p className={styles.error}>{errors.password && errors.password.message}</p>
             </div>
+
+
+            <Button disabled={!isValid} type={"submit"} $margin={"0 0 1rem 0"}>Borrar</Button>
+
         </form>;
 
     return <>
         <Modal content={modalContent} show={isModalOpen} hide={closeModal}/>
         {form}
     </>;
-};
-
-type Props = {
-    closeModal: () => void;
-}
-
-const OnSuccess = (props: Props) => {
-    const navigate = useNavigate();
-
-    const handler = () => {
-        props.closeModal();
-        navigate("/");
-    };
-
-    return <div className={styles.layout}>
-        <p className={styles.text}>Cuenta borrada con éxito</p>
-        <button type={"button"} className={styles.button} onClick={handler}>Ok</button>
-    </div>;
 };
 
 export default DeleteAccount;

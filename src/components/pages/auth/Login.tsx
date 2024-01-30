@@ -9,14 +9,14 @@ import {loginFn} from "../../../utils/api/auth-api";
 import {ApiErrorDTO} from "../../../utils/api/dtos/api";
 import {emailRgx} from "../../../utils/regex";
 import CircleIcon from "../../layout/CircleIcon";
-import {useAppDispatch} from "../../../store/reduxHooks";
-import {authActions} from "../../../store/auth-slice";
+import useModal from "../../hooks/useModal";
+import ApiError from "../../layout/modal-contents/ApiError";
+import Modal from "../../hooks/Modal";
 
 const Login = () => {
+    const {isModalOpen, openModal, modalContent, closeModal} = useModal();
     const [passwordVisibility, setPwVisibility] = useState(true);
-    const [apiError, setApiError] = useState<string | undefined>(undefined);
     const navigate = useNavigate();
-    const dispatch = useAppDispatch();
     const {
         register,
         handleSubmit,
@@ -38,8 +38,8 @@ const Login = () => {
             localStorage.setItem("USER_ROLE", response.USER_ROLE);
         },
         onError: (error: ApiErrorDTO) => {
-            setApiError(error.errorMsg);
-        },
+            openModal(<ApiError errorMsg={error.errorMsg} closeModal={closeModal}/>);
+        }
     });
 
     const togglePwVisibility = () => {
@@ -112,15 +112,22 @@ const Login = () => {
         <div className={styles.layout}>
             <p className={styles.header}>Iniciar sesión</p>
             {formJSX}
-            {login.isError && <p>{apiError}</p>}
             <div className={styles["go-to-register"]}>
                 <p>¿Aún no tienes cuenta?</p>
                 <NavLink to={"/register"} className={styles["register-link"]}>Regístrate aquí</NavLink>
             </div>
+            <div className={styles["go-to-register"]}>
+                <NavLink to={"/request-password-reset"} className={styles["register-link"]}>¿Has olvidado la
+                    contraseña?
+                </NavLink>
+            </div>
         </div>
     );
 
-    return contentJSX;
+    return <>
+        <Modal content={modalContent} show={isModalOpen} hide={closeModal}/>
+        {contentJSX}
+    </>;
 };
 
 export default Login;

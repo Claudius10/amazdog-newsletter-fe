@@ -1,33 +1,112 @@
-.layout {
-    height: 11rem;
-}
-
 .container {
-    background-color: #ffb12c;
-    height: 10rem;
+    background-color: #fe8f11;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
     position: absolute;
     left: 0;
     right: 0;
     bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
+
+.info {
+    display: flex;
+    gap: 5rem;
+    color: white;
+    border-bottom: 1px solid white;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.header {
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.column a {
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.text {
+    font-weight: 600;
+    font-size: 12px;
+    color: white;
+}
+
+.text a {
+    text-decoration: none;
+    color: white;
+    border-bottom: 1px solid white;
+}
+
+/* desktop */
+@media (min-width: 1400px) {
+    .layout {
+        height: 17rem;
+    }
+
+    .container {
+        height: 10rem;
+    }
+}
+
 
 /* portrait phones */
 @media only screen and (min-device-width: 280px) and (max-device-width: 540px) {
-    /* Styles */
     .layout {
-        height: 21rem;
+        height: 45rem;
     }
 
     .container {
         height: fit-content;
+    }
+
+    .info {
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .text {
+        text-align: center;
     }
 }
 
 /* landscape phones */
-@media only screen and (min-device-width: 653px) and (max-device-width: 915px) {
-    /* Styles */
+@media only screen and (min-device-width: 653px) and (max-device-width: 932px) {
     .layout {
-        height: 11rem;
+        height: 90vh;
+    }
+
+    .container {
+        height: fit-content;
+    }
+
+    .info {
+        flex-direction: row;
+        gap: 3rem;
+    }
+
+    .text {
+        text-align: center;
+    }
+}
+
+/* portrait tablets */
+@media only screen and (min-device-height: 1024px) and (max-device-width: 915px) {
+    .layout {
+        height: 30vh;
     }
 
     .container {
@@ -35,11 +114,10 @@
     }
 }
 
-/* portrait tablets */
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-    /* Styles */
+/* landscape tablets */
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1368px) {
     .layout {
-        height: 11rem;
+        height: 35vh;
     }
 
     .container {

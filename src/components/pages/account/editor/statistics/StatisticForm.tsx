@@ -3,6 +3,10 @@ import styles from "../../../../charts/ChartList.module.css";
 import {useMutation} from "@tanstack/react-query";
 import {createStatistic} from "../../../../../utils/api/statistics-api";
 import {Statistic} from "../../../../../utils/dto/statistics";
+import useModal from "../../../../hooks/useModal";
+import {ApiErrorDTO} from "../../../../../utils/api/dtos/api";
+import ApiError from "../../../../layout/modal-contents/ApiError";
+import Modal from "../../../../hooks/Modal";
 
 type Props = {
     refetch?: () => void
@@ -10,7 +14,7 @@ type Props = {
 }
 
 const StatisticForm = (props: Props) => {
-
+    const {isModalOpen, openModal, modalContent, closeModal} = useModal();
     const {handleSubmit, register, reset, formState: {errors, isValid}} = useForm<Statistic>({
         mode: "onBlur",
         reValidateMode: "onBlur",
@@ -25,6 +29,9 @@ const StatisticForm = (props: Props) => {
 
             reset();
             props.toggleForm();
+        },
+        onError: (error: ApiErrorDTO) => {
+            openModal(<ApiError errorMsg={error.errorMsg} closeModal={closeModal}/>);
         }
     });
 
@@ -32,7 +39,7 @@ const StatisticForm = (props: Props) => {
         createStatisticHandler.mutate(data);
     };
 
-    return <form onSubmit={handleSubmit(onSubmitHandler)}>
+    const form = <form onSubmit={handleSubmit(onSubmitHandler)}>
         <span>Tema/Tópico: </span>
         <input
             id="subject"
@@ -99,6 +106,11 @@ const StatisticForm = (props: Props) => {
         <p className={styles.error}>{errors.tags?.message}</p>
         <button type={"submit"} disabled={!isValid}>Finalizar</button>
     </form>;
+
+    return <>
+        <Modal content={modalContent} show={isModalOpen} hide={closeModal}/>
+        {form}
+    </>;
 };
 
 export default StatisticForm;

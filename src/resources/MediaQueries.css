@@ -3,7 +3,7 @@
 }
 
 /* not desktop */
-@media (max-width: 1400px) {
+@media (max-width: 1024px) {
 }
 
 /* portrait phones */
@@ -12,7 +12,7 @@
 }
 
 /* landscape phones */
-@media only screen and (min-device-width: 653px) and (max-device-width: 915px) {
+@media only screen and (min-device-width: 653px) and (max-device-width: 932px) {
 
 }
 
@@ -23,10 +23,5 @@
 
 /* landscape tablets */
 @media only screen and (min-device-width: 1024px) and (max-device-width: 1368px) {
-
-}
-
-/* fold portrait  */
-@media only screen and (min-device-width: 280px) and (max-device-width: 280px) {
 
 }

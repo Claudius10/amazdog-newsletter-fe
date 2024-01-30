@@ -4,13 +4,17 @@ import MobileButton from "../layout/MobileButton/MobileButton";
 import MenuIcon from "../../resources/Icons/menu.png";
 import loginIcon from "../../resources/Icons/login.png";
 import loggedInIcon from "../../resources/Icons/loggedin.png";
-
-// el componente Navigation está usado dentro del componente Header
-// y representa la navigación tanto en desktop como en dispositivos móviles para cambiar de componentes
-// no le hace falta props
+import {useState} from "react";
+import Icon from "../layout/Icon";
+import amazdogHeaderLogo from "../../resources/Imagenes/logo.png";
 
 const Navigation = () => {
+    const [showDropdown, setShowDropdown] = useState(false);
     const navigate = useNavigate();
+
+    const mobileMenuAction = () => {
+        setShowDropdown(!showDropdown);
+    };
 
     let accountIcon;
     if (localStorage.getItem("ACCESS_TOKEN") !== null) {
@@ -27,14 +31,6 @@ const Navigation = () => {
         }
     };
 
-    // la variable declarada con const (constant "constante", las variables en javascript pueden set declaradas con let o const,
-    // si son const no pueden ser reasignadas otro valor a partir de su valor inicial)
-    // desktop contiene el elemento html nav que tiene la barra de navegación para pantalla desktop
-    // el componente NavLink es un componente anchor (<a>) especial que viene dado por React Router que permite
-    // cambiar la ruta de la aplicación, por ejemplo cuando se hace click en Noticias
-    // la ruta de la aplicación será amazdog-newsletter.com/noticias
-    // cuando se hace click en estadísticas será amazdog-newsletter.com/estadísticas etc.
-    // la ruta por defecto cuando carga la página será simplemente amazdog-newsletter.com
     const desktop = (
         <nav className={styles.desktop}>
             <NavLink to={"/noticias"}>Noticias</NavLink>
@@ -49,14 +45,15 @@ const Navigation = () => {
         </nav>
     );
 
-    const mobileMenuAction = () => {
-    };
+    const mobileMenuDropdown = <div
+        className={showDropdown ? styles.mobileMenuDropdownOn : styles.mobileMenuDropdownOff}>
+        <NavLink to={"/noticias"} onClick={mobileMenuAction}>Noticias</NavLink>
+        <NavLink to={"/estadísticas"} onClick={mobileMenuAction}>Estadísticas</NavLink>
+        <NavLink to={"/profile"} onClick={mobileMenuAction}>Cuenta</NavLink>
+    </div>;
 
-    // la variable mobile representa el botón que aparece en pantallas móviles con un icono de menu
-    // la función de arriba (vacía de momento) representará la acción que se ejecutará cuando se pulsa el botón
     const mobile = (
-        <div className={styles.mobile}>
-            {/* abajo los props del componente MobileButton se configuran como si fueran atributos de un elemento html */}
+        <div className={showDropdown ? styles.mobileOn : styles.mobileOff}>
             <MobileButton
                 name={"menu"}
                 action={mobileMenuAction}
@@ -64,14 +61,23 @@ const Navigation = () => {
                 height={"35px"}
                 width={"35px"}
                 alt={"Menu Button"}/>
+            {mobileMenuDropdown}
         </div>
     );
 
-    // en react también podemos devolver o retornar una o varias variables que contienen html
-    return <>
-        {desktop}
-        {mobile}
-    </>;
+    return <div className={styles.layout}>
+        <div className={styles.container}>
+            <NavLink to={"/"} onClick={() => {
+                if (showDropdown) {
+                    setShowDropdown(false);
+                }
+            }} className={styles.icon}>
+                <Icon src={amazdogHeaderLogo} height={"27px"} width={"auto"} alt={"Logo de Amazdog"}/>
+            </NavLink>
+            {desktop}
+            {mobile}
+        </div>
+    </div>;
 };
 
 export default Navigation;

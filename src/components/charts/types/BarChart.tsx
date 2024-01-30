@@ -107,18 +107,18 @@ const BarChart = (props: ChartProps) => {
     const data = {labels, datasets: props.dataset};
     const sourceLink = props.dataset[0].data[0].source;
 
-    return (
-        <div className={styles.border}>
-            <div className={styles.chartContainer}>
-                <p className={styles.title}>{props.title}</p>
-                <Bar options={options} data={data}/>
-                <div className={styles.info}>
-                    <NavLink to={sourceLink}>Fuente</NavLink>
-                    <p>Tags: {tags.map((item, index) => <span key={index}>{(index ? ', ' : '') + item}</span>)}
-                    </p>
-                </div>
-            </div>
-        </div>);
+    return <div className={styles.layout}>
+        <p className={styles.title}>{props.title}</p>
+
+        <div className={styles.chartContainer}>
+            <Bar options={options} data={data}/>
+        </div>
+
+        <div className={styles.info}>
+            <NavLink to={sourceLink}>Fuente</NavLink>
+            <p className={styles.tags}>{tags.map((item, index) => <span key={index}>{(index ? ', ' : '') + item}</span>)}</p>
+        </div>
+    </div>;
 };
 
 export default BarChart;

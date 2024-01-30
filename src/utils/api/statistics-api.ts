@@ -1,5 +1,6 @@
 import {QueryOptions} from "@tanstack/react-query";
 import {StatisticDTO} from "./dtos/statistics";
+import {keyIsValid} from "../functions";
 
 export const createStatistic = async (statistic: StatisticDTO) => {
     const createStatisticFn = async (statistic: StatisticDTO) => {
@@ -17,9 +18,9 @@ export const createStatistic = async (statistic: StatisticDTO) => {
         }
     };
 
-    // check if access token expired
-    // ...
-    return await createStatisticFn(statistic);
+    if (keyIsValid()) {
+        return await createStatisticFn(statistic);
+    }
 };
 
 export const findAllSubjects = async (options: QueryOptions) => {
@@ -46,9 +47,9 @@ export const findAllSubjects = async (options: QueryOptions) => {
         }
     };
 
-    // check if access token expired
-    // ...
-    return await findAllSubjectsFn(options);
+    if (keyIsValid()) {
+        return await findAllSubjectsFn(options);
+    }
 };
 
 export const findAllBySubject = async (options: QueryOptions) => {
@@ -76,9 +77,9 @@ export const findAllBySubject = async (options: QueryOptions) => {
         }
     };
 
-    // check if access token expired
-    // ...
-    return await findAllBySubjectFn(options);
+    if (keyIsValid()) {
+        return await findAllBySubjectFn(options);
+    }
 };
 
 export const deleteById = async (id: number) => {
@@ -98,9 +99,9 @@ export const deleteById = async (id: number) => {
         }
     };
 
-    // check if access token expired
-    // ...
-    return await deleteByIdFn(id);
+    if (keyIsValid()) {
+        return await deleteByIdFn(id);
+    }
 };
 
 export const deleteAllBySubject = async (subject: string) => {
@@ -115,12 +116,10 @@ export const deleteAllBySubject = async (subject: string) => {
 
         if (!response.ok) {
             throw await response.json();
-        } else {
-            return response.text();
         }
     };
 
-    // check if access token expired
-    // ...
-    return await deleteAllBySubjectFn(subject);
+    if (keyIsValid()) {
+        return await deleteAllBySubjectFn(subject);
+    }
 };

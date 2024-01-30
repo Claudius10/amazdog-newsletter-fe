@@ -185,7 +185,7 @@
 }
 
 /* landscape phones */
-@media only screen and (min-device-width: 653px) and (max-device-height: 540px) {
+@media only screen and (min-device-width: 653px) and (max-device-width: 932px) {
     .header {
         margin-bottom: 1rem;
         margin-top: 1rem;

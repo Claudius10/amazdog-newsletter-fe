@@ -1,9 +1,10 @@
 .layout {
     position: sticky;
-    top: 3.5rem;
+    top: 3.3rem;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: white;
 }
 
 .tabs {
@@ -12,20 +13,20 @@
     padding-bottom: 0.2rem;
 }
 
-.tabs ul {
+.list {
     display: flex;
     justify-content: center;
     list-style: none;
     gap: 2rem;
 }
 
-.tabs li {
+.item {
     margin-top: 0.2rem;
     margin-bottom: 0.2rem;
     height: 18px;
 }
 
-.tabs ul li a {
+.item a {
     text-decoration: none;
     color: #ffb12c;
     font-weight: 800;

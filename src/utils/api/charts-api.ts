@@ -1,4 +1,5 @@
 import {ChartDataDTO, ChartDTO} from "./dtos/chart";
+import {keyIsValid} from "../functions";
 
 export const createChart = async (chart: ChartDTO) => {
     const createChartFn = async (chart: ChartDTO) => {
@@ -13,14 +14,12 @@ export const createChart = async (chart: ChartDTO) => {
 
         if (!response.ok) {
             throw await response.json();
-        } else {
-            return await response.text();
         }
     };
 
-    // check if access token expired
-    // ...
-    return await createChartFn(chart);
+    if (keyIsValid()) {
+        return await createChartFn(chart);
+    }
 };
 
 
@@ -35,8 +34,6 @@ export const findAllCharts = async () => {
         }
     };
 
-    // check if access token expired
-    // ...
     return await findAllChartsFn();
 };
 
@@ -51,8 +48,6 @@ export const findAllChartData = async () => {
         }
     };
 
-    // check if access token expired
-    // ...
     return await findAllChartDataFn();
 };
 
@@ -67,12 +62,10 @@ export const deleteChart = async (chartId: number) => {
 
         if (!response.ok) {
             throw await response.json();
-        } else {
-            return await response.text();
         }
     };
 
-    // check if access token expired
-    // ...
-    return await deleteChartFn(chartId);
+    if (keyIsValid()) {
+        return await deleteChartFn(chartId);
+    }
 };

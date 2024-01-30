@@ -1,79 +1,100 @@
-.desktop {
+.layout {
+    position: sticky;
+    top: 0;
+    height: 3.3rem;
+    background-color: #ffb12c;
+    color: #ffffff;
+    z-index: 9999;
     display: flex;
-    gap: 1.5rem;
 }
 
-.desktop a {
-    text-decoration: none;
-    color: inherit;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 2px;
-}
-
-.mobile {
-    display: none;
+.icon {
+    margin-top: 5px;
 }
 
 /* desktop */
-@media (min-width: 1400px) {
+@media (min-width: 1080px) {
+    .layout {
+        justify-content: center;
+    }
 
+    .container {
+        display: flex;
+        align-items: center;
+        gap: 35rem;
+    }
+
+    .mobileOff {
+        display: none;
+    }
+
+    .desktop {
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+    }
+
+    .desktop a {
+        text-decoration: none;
+        color: inherit;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 2px;
+    }
 }
 
 /* not desktop */
 @media (max-width: 1024px) {
-    .desktop {
-        display: none;
+    .layout {
+        justify-content: center;
     }
-}
 
-/* portrait phones */
-@media only screen and (min-device-width: 280px) and (max-device-width: 540px) {
     .desktop {
         display: none;
     }
 
-    .mobile {
+    .container {
         display: flex;
-    }
-}
-
-/* landscape phones */
-@media only screen and (min-device-width: 653px) and (max-device-width: 915px) {
-    .desktop {
-        display: none;
+        align-items: center;
+        width: 20rem;
+        gap: 3.5rem;
     }
 
-    .mobile {
+    .mobileOn {
+        margin-top: 4.8rem;
         display: flex;
-    }
-}
-
-/* portrait tablets */
-@media only screen and (min-device-height: 1024px) and (max-device-width: 915px) {
-    .desktop {
-        display: none;
+        width: 7.5rem;
+        flex-direction: column;
     }
 
-    .mobile {
+    .mobileOff {
         display: flex;
-    }
-}
-
-/* landscape tablets */
-@media only screen and (min-device-width: 1024px) and (max-device-width: 1368px) {
-    .mobile {
-        display: none;
-    }
-}
-
-/* fold portrait  */
-@media only screen and (min-device-width: 280px) and (max-device-width: 280px) {
-    .desktop {
-        display: none;
+        flex-direction: column;
+        width: 7.5rem;
     }
 
-    .mobile {
+    .mobileMenuDropdownOn {
         display: flex;
+        flex-direction: column;
+        background-color: white;
+        gap: 0.5rem;
+        padding: 5px;
+        box-shadow: #ffb12c 0 0 0 2px, rgba(0, 0, 0, 0.65) 0 4px 6px -1px, rgba(0, 0, 0, 0.08) 0 1px 0 inset;
+    }
+
+    .mobileMenuDropdownOff {
+        display: none;
+    }
+
+    .mobileMenuDropdownOff a {
+        display: none;
+    }
+
+    .mobileMenuDropdownOn a {
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        color: #ffb12c;
     }
 }

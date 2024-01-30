@@ -2,7 +2,7 @@ import {useQuery} from "@tanstack/react-query";
 import {findAllSubjects} from "../../../../../utils/api/statistics-api";
 import SubjectItem from "./SubjectItem";
 import {useSearchParams} from "react-router-dom";
-import PaginationChartSubjects from "../charts/PaginationChartSubjects";
+import PaginationChartSubjects from "./PaginationChartSubjects";
 import {Subject} from "../../../../../utils/dto/statistics";
 
 type Props = {

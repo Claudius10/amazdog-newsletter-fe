@@ -4,11 +4,13 @@ import {RouterProvider} from "react-router-dom";
 import Routes from "./components/Routes";
 import {ReactQueryDevtools} from '@tanstack/react-query-devtools';
 
-// TODO - Add password reset functionality
-// TODO - Add jwt expiration check for api calls
-// TODO - Define all onSuccess/onError for Mutations
+// TODO - style modals
+// TODO - style acc activation comp
+// TODO - style pw request comp
+// TODO - style pw change comp
 // TODO - Add warning to only have one dataset per doughnut chart
-// TODO - Desktop and mobile styling
+// TODO - style editor
+// TODO - do admin panel and style
 
 function App() {
 

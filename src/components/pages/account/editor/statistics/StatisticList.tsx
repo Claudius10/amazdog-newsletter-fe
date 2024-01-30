@@ -8,6 +8,8 @@ import Modal from "../../../../hooks/Modal";
 import DeleteConfirmModal from "../../../../layout/modal-contents/DeleteConfirmModal";
 import {useSearchParams} from "react-router-dom";
 import PaginationSubject from "../subjects/PaginationSubject";
+import {ApiErrorDTO} from "../../../../../utils/api/dtos/api";
+import ApiError from "../../../../layout/modal-contents/ApiError";
 
 const StatisticList = () => {
     const {isModalOpen, openModal, modalContent, closeModal} = useModal();
@@ -27,8 +29,9 @@ const StatisticList = () => {
         onSuccess: async () => {
             await refetch();
         },
-        onError: () => {
-        },
+        onError: (error: ApiErrorDTO) => {
+            openModal(<ApiError errorMsg={error.errorMsg} closeModal={closeModal}/>);
+        }
     });
 
     const onDeleteConfirm = (subject: string) => {
