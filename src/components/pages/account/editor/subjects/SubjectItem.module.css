@@ -1,36 +1,25 @@
 .layout {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    margin-top: 2rem;
-    gap: 1rem;
-}
-
-.itemList {
-    display: flex;
     justify-content: space-between;
-    align-items: center;
     border-radius: 20px;
     box-shadow: #ffb12c 0 1px 3px 0, #ffb12c 0 0 0 1px;
 }
 
 .title {
-    text-align: center;
-    margin-bottom: 1rem;
     font-weight: 600;
-    font-size: 1.5rem;
-}
-
-.placeholder {
-    font-weight: 600;
-    font-size: 2rem;
 }
 
 /* desktop */
 @media (min-width: 1400px) {
-    .itemList {
-        width: 40vw;
+    .layout {
+        width: 25vw;
+        min-height: 3vh;
         padding: 1rem;
+    }
+
+    .title {
+        width: 24vw;
     }
 }
 
@@ -40,32 +29,52 @@
 
 /* portrait phones */
 @media only screen and (min-device-width: 280px) and (max-device-width: 540px) {
-    .itemList {
-        width: 80vw;
+    .layout {
+        width: 75vw;
+        min-height: 6vh;
         padding: 1rem;
+    }
+
+    .title {
+        width: 70vw;
     }
 }
 
 /* landscape phones */
 @media only screen and (min-device-width: 653px) and (max-device-width: 932px) {
-    .itemList {
-        width: 80vw;
+    .layout {
+        width: 75vw;
+        min-height: 9vh;
         padding: 1rem;
+    }
+
+    .title {
+        width: 70vw;
     }
 }
 
 /* portrait tablets */
 @media only screen and (min-device-height: 1024px) and (max-device-width: 915px) {
-    .itemList {
-        width: 80vw;
+    .layout {
+        width: 75vw;
+        min-height: 3vh;
         padding: 1rem;
+    }
+
+    .title {
+        width: 70vw;
     }
 }
 
 /* landscape tablets */
 @media only screen and (min-device-width: 1024px) and (max-device-width: 1368px) {
-    .itemList {
-        width: 70vw;
+    .layout {
+        width: 60vw;
+        min-height: 3vh;
         padding: 1rem;
+    }
+
+    .title {
+        width: 55vw;
     }
 }

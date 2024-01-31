@@ -4,13 +4,8 @@ import {RouterProvider} from "react-router-dom";
 import Routes from "./components/Routes";
 import {ReactQueryDevtools} from '@tanstack/react-query-devtools';
 
-// TODO - style modals
-// TODO - style acc activation comp
-// TODO - style pw request comp
-// TODO - style pw change comp
-// TODO - Add warning to only have one dataset per doughnut chart
-// TODO - style editor
 // TODO - do admin panel and style
+// TODO - placeholder comp for 404 routes
 
 function App() {
 

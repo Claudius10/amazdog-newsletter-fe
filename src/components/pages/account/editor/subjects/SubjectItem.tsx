@@ -1,3 +1,4 @@
+import styles from "./SubjectItem.module.css";
 import {Subject} from "../../../../../utils/dto/statistics";
 
 type Props = {
@@ -11,8 +12,8 @@ const SubjectItem = (props: Props) => {
         props.onSelectedSubject({name: props.subject, id: undefined});
     };
 
-    return <div>
-        {props.subject}
+    return <div className={styles.layout}>
+        <p className={styles.title}>{props.subject}</p>
         <input type={"checkbox"} onClick={addSubject}/>
     </div>;
 };

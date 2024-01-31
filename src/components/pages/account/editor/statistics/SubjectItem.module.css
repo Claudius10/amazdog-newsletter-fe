@@ -14,6 +14,23 @@
     box-shadow: #ffb12c 0 1px 3px 0, #ffb12c 0 0 0 1px;
 }
 
+.item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.item a {
+    width: fit-content;
+    color: black;
+    font-weight: 600;
+}
+
+.text {
+    font-weight: 600;
+    margin-right: 0.5rem;
+}
+
 .title {
     text-align: center;
     margin-bottom: 1rem;
@@ -21,16 +38,26 @@
     font-size: 1.5rem;
 }
 
+.pages {
+    margin-top: 4rem;
+}
+
 .placeholder {
     font-weight: 600;
     font-size: 2rem;
 }
+
 
 /* desktop */
 @media (min-width: 1400px) {
     .itemList {
         width: 40vw;
         padding: 1rem;
+    }
+
+    .item {
+        width: 12.5vw;
+        min-height: 7vh;
     }
 }
 
@@ -43,6 +70,14 @@
     .itemList {
         width: 80vw;
         padding: 1rem;
+        flex-direction: column;
+        gap: 0.5rem;
+
+    }
+
+    .item {
+        width: 80vw;
+        min-height: 6vh;
     }
 }
 
@@ -52,20 +87,35 @@
         width: 80vw;
         padding: 1rem;
     }
+
+    .item {
+        width: 25vw;
+        min-height: 19vh;
+    }
 }
 
 /* portrait tablets */
 @media only screen and (min-device-height: 1024px) and (max-device-width: 915px) {
     .itemList {
-        width: 80vw;
+        width: 60vw;
         padding: 1rem;
+    }
+
+    .item {
+        width: 30vw;
+        min-height: 7vh;
     }
 }
 
 /* landscape tablets */
 @media only screen and (min-device-width: 1024px) and (max-device-width: 1368px) {
     .itemList {
-        width: 70vw;
+        width: 60vw;
         padding: 1rem;
+    }
+
+    .item {
+        width: 30vw;
+        min-height: 7vh;
     }
 }

@@ -1,36 +1,23 @@
 .layout {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin-top: 2rem;
-    gap: 1rem;
+    gap: 0.5rem;
 }
 
-.itemList {
+.list {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 20px;
-    box-shadow: #ffb12c 0 1px 3px 0, #ffb12c 0 0 0 1px;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
-.title {
-    text-align: center;
-    margin-bottom: 1rem;
+.text {
     font-weight: 600;
-    font-size: 1.5rem;
-}
-
-.placeholder {
-    font-weight: 600;
-    font-size: 2rem;
 }
 
 /* desktop */
 @media (min-width: 1400px) {
-    .itemList {
-        width: 40vw;
-        padding: 1rem;
+    .layout {
+        width: 33vw;
     }
 }
 
@@ -40,32 +27,28 @@
 
 /* portrait phones */
 @media only screen and (min-device-width: 280px) and (max-device-width: 540px) {
-    .itemList {
-        width: 80vw;
-        padding: 1rem;
+    .layout {
+        width: 55vw;
     }
 }
 
 /* landscape phones */
 @media only screen and (min-device-width: 653px) and (max-device-width: 932px) {
-    .itemList {
-        width: 80vw;
-        padding: 1rem;
+    .layout {
+        width: 65vw;
     }
 }
 
 /* portrait tablets */
 @media only screen and (min-device-height: 1024px) and (max-device-width: 915px) {
-    .itemList {
-        width: 80vw;
-        padding: 1rem;
+    .layout {
+        width: 65vw;
     }
 }
 
 /* landscape tablets */
 @media only screen and (min-device-width: 1024px) and (max-device-width: 1368px) {
-    .itemList {
-        width: 70vw;
-        padding: 1rem;
+    .layout {
+        width: 60vw;
     }
 }

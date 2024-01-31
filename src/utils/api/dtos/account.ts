@@ -1,3 +1,9 @@
+export type UserDTO = {
+    id: number;
+    name: string;
+    email: string;
+}
+
 export type PasswordChangeDTO = {
     currentPassword: string;
     newPassword: string;
@@ -41,4 +47,10 @@ export type PasswordUpdateQuery = {
 export type AccountDeleteQuery = {
     data: PasswordDTO;
     userId: number;
+}
+
+export type UpdateUserRoleQuery = {
+    userId: number;
+    roleName: string;
+    add: boolean;
 }

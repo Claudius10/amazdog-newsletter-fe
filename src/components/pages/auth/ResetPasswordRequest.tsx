@@ -1,3 +1,4 @@
+import styles from "./ResetPasswordRequest.module.css";
 import {requestPasswordReset} from "../../../utils/api/auth-api";
 import ApiError from "../../layout/modal-contents/ApiError";
 import useModal from "../../hooks/useModal";
@@ -6,6 +7,7 @@ import {emailRgx} from "../../../utils/regex";
 import Modal from "../../hooks/Modal";
 import {useMutation} from "@tanstack/react-query";
 import OnSuccessModal from "../../layout/modal-contents/OnSuccessModal";
+import {Button} from "../../layout/styled";
 
 type FormValues = {
     email: string;
@@ -34,35 +36,29 @@ const ResetPasswordRequest = () => {
         mutation.mutate(form.email);
     };
 
-    const form = <form onSubmit={handleSubmit(onSubmitHandler)}>
-        <p>Ayuda de contraseña</p>
-
-        <div>
-            <label htmlFor={"email"}>
-                Email asociado con su cuenta
-            </label>
-            <div>
+    const form = <form className={styles.form} onSubmit={handleSubmit(onSubmitHandler)}>
+        <p className={styles.text}>Restablecer contraseña</p>
+        <div className={styles["login-input"]}>
+            <div className={styles["input-container"]}>
                 <input
                     id={"email"}
-                    type={"text"}
+                    type={"email"}
+                    className={styles.input}
                     autoComplete={"email"}
+                    placeholder={"Correo electrónico"}
                     {...register("email", {
-                        required: {value: true, message: "El valor no puede faltar"},
+                        required: {value: true, message: "El email no puede faltar"},
                         pattern: {
                             value: emailRgx,
                             message: "Compruebe el email introducido"
                         },
-                        minLength: {value: 2, message: "Mínimo 2 caracteres"},
-                        maxLength: {value: 50, message: "Máximo 50 caracteres"}
+                        maxLength: {value: 100, message: "Compruebe el email introducido"}
                     })}
                 />
             </div>
+            <p className={styles.formError}>{errors.email?.message}</p>
         </div>
-        <p>{errors.email && errors.email.message}</p>
-
-        <div>
-            <button disabled={!isValid} type={"submit"}>Continuar</button>
-        </div>
+        <Button disabled={!isValid} $margin={"1rem 0 1rem 0"} type={"submit"}>Continuar</Button>
     </form>;
 
     return <>

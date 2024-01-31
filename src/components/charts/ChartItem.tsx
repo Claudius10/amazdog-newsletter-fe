@@ -1,6 +1,4 @@
-import {useState} from "react";
-import {findAllSubjects} from "../../utils/api/statistics-api";
-import {useQuery} from "@tanstack/react-query";
+import styles from "./ChartItem.module.css";
 import {ChartDTO} from "../../utils/api/dtos/chart";
 
 type Props = {
@@ -8,31 +6,26 @@ type Props = {
 }
 
 const ChartItem = (props: Props) => {
-    const [showSubjects, setShowSubjects] = useState(false);
+    let chartType;
+    switch (props.chart.type) {
+        case "Bar":
+            chartType = "Barras horizontales";
+            break;
+        case "Line":
+            chartType = "Líneas";
+            break;
+        case "Doughnut":
+            chartType = "Donut";
+            break;
+    }
 
-    const subjects = useQuery({
-        queryKey: ["statistics", "subjects"],
-        queryFn: findAllSubjects,
-        enabled: false
-    });
-
-    const addSubjectToChart = (subject: string, chartId: number) => {
-        // update chart item in the backend with the new subject
-
-    };
-    const removeSubjectFromChart = (subject: string, id: number) => {
-        // update chart on backend
-    };
-
-    const showSubjectList = () => {
-        setShowSubjects(!showSubjects);
-        subjects.refetch();
-    };
-
-    return <div>
-        Gráfico tipo {props.chart.type}:
-        <p>Título: {props.chart.title}</p>
-        Tópicos/temas: {props.chart.subjects.map((subject) => <p key={subject.id}>{subject.name}</p>)}
+    return <div className={styles.layout}>
+        <p><span className={styles.text}>Gráfico tipo:</span> {chartType}</p>
+        <p><span className={styles.text}>Título:</span> {props.chart.title}</p>
+        <div className={styles.list}>
+            <span className={styles.text}>Tópicos/temas:</span>
+            {props.chart.subjects.map((subject) => <p key={subject.id}>{subject.name}</p>)}
+        </div>
     </div>;
 };
 

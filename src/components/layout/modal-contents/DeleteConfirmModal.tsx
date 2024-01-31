@@ -7,7 +7,7 @@ type Props = {
 
 const DeleteConfirmModal = (props: Props) => {
     return <div className={styles.modal}>
-        ¿Desea proceder con la eliminación?
+        <p className={styles.text}>¿Desea proceder con la eliminación?</p>
         <Button onClick={props.closeModal}>Sí</Button>
     </div>;
 };

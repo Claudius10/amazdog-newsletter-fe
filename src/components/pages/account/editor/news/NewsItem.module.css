@@ -1,0 +1,168 @@
+.layout {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.news {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: #ffb12c 0 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.imgContainer {
+    overflow: hidden;
+    display: flex;
+}
+
+.imgContainer img {
+    max-width: inherit;
+    max-height: inherit;
+    height: inherit;
+    width: inherit;
+    object-fit: cover;
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.title {
+    font-weight: bold;
+    text-align: center;
+}
+
+.author {
+    font-weight: 600;
+}
+
+.text {
+    line-height: 1.4rem;
+    width: 95%;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    width: 95%;
+}
+
+.footer a {
+    text-decoration: none;
+    color: #ffb12c;
+    font-weight: 600;
+    border-bottom: 2px solid #ffb12c;
+}
+
+.keywords {
+    font-weight: 600;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin: 1rem 0 1rem 0;
+}
+
+.header {
+    font-weight: 600;
+}
+
+.placeholder {
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+/* desktop */
+@media (min-width: 1400px) {
+    .news {
+        width: 50rem;
+    }
+
+    .imgContainer {
+        width: 50rem;
+        height: 50vh;
+    }
+}
+
+/* not desktop */
+@media (max-width: 1400px) {
+}
+
+/* portrait phones */
+@media only screen and (min-device-width: 280px) and (max-device-width: 540px) {
+    .news {
+        width: 90vw;
+    }
+
+    .imgContainer {
+        width: 90vw;
+        height: 50vh;
+    }
+
+    .footer {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+}
+
+/* landscape phones */
+@media only screen and (min-device-width: 653px) and (max-device-width: 932px) {
+    .news {
+        width: 80vw;
+    }
+
+    .imgContainer {
+        width: 80vw;
+        height: 100vh;
+    }
+
+    .footer {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+}
+
+/* landscape tablets */
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1368px) {
+    .news {
+        width: 80vw;
+    }
+
+    .imgContainer {
+        width: 80vw;
+        height: 60vh;
+    }
+
+    .footer {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+}
+
+/* portrait tablets */
+@media only screen and (min-device-height: 1024px) and (max-device-width: 1024px) {
+    .news {
+        width: 80vw;
+    }
+
+    .imgContainer {
+        width: 80vw;
+        height: 50vh;
+    }
+
+    .footer {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+}
+

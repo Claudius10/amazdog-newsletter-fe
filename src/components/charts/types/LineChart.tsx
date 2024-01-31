@@ -92,14 +92,9 @@ const LineChart = (props: ChartProps) => {
         },
     };
 
-    let labels: string[] = [];
     let tags: string [] = [];
     props.dataset.forEach((dataset: Dataset) => {
         dataset.data.forEach((statistic: Statistic) => {
-                if (!labels.includes(statistic.date)) {
-                    labels.push(statistic.date);
-                }
-
                 let tempTags = statistic.tags.split(', ');
                 tempTags.forEach((tag) => {
                     if (!tags.includes(tag)) {
@@ -110,7 +105,7 @@ const LineChart = (props: ChartProps) => {
         );
     });
 
-    const data = {labels, datasets: props.dataset};
+    const data = {datasets: props.dataset};
     const sourceLink = props.dataset[0].data[0].source;
 
     return <div className={styles.layout}>

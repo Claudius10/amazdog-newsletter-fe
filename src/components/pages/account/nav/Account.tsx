@@ -22,6 +22,13 @@ const Account = () => {
                         </NavLink>
                     </li>
 
+                    {(localStorage.getItem("USER_ROLE") === "ADMINISTRADOR") &&
+                        <li className={styles.item}>
+                            <NavLink to={"/admin"} end>
+                                <span className={styles.text}>Admin</span>
+                            </NavLink>
+                        </li>}
+
                     {(localStorage.getItem("USER_ROLE") === "EDITOR" || localStorage.getItem("USER_ROLE") === "ADMINISTRADOR") &&
                         <li className={styles.item}>
                             <NavLink to={"/editor/statistics?page=1&size=5"} end>

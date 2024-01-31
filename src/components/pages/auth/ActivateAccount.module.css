@@ -2,4 +2,20 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    height: 100vh;
+}
+
+.text {
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+/* desktop */
+@media (min-width: 1400px) {
+    .layout {
+        justify-content: flex-start;
+        margin-top: 5rem;
+    }
 }

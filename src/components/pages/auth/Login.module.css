@@ -3,6 +3,7 @@
     font-size: small;
     margin-top: 0.5rem;
     margin-bottom: 0.3rem;
+    font-weight: 600;
 }
 
 .form {
@@ -38,17 +39,13 @@
 }
 
 .input {
-    width: 95%;
+    width: 90%;
     border: none;
     background-color: transparent;
 }
 
 .pwIcon {
     margin-left: 0.5rem;
-}
-
-.input {
-    width: 90%;
 }
 
 .input::placeholder {
@@ -216,7 +213,7 @@
 }
 
 /* portrait tablets */
-@media only screen and (min-device-height: 1024px) and (max-device-width: 912px) {
+@media only screen and (min-device-height: 1024px) and (max-device-width: 915px) {
     .layout {
         margin-top: 5rem;
     }

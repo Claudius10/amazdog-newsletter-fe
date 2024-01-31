@@ -1,3 +1,4 @@
+import styles from "./SubjectList.module.css";
 import {useQuery} from "@tanstack/react-query";
 import {findAllSubjects} from "../../../../../utils/api/statistics-api";
 import SubjectItem from "./SubjectItem";
@@ -24,12 +25,17 @@ const SubjectList = (props: Props) => {
         totalPages = subjects.data.totalPages;
     }
 
-    return <>
-        {subjects.data?.content.map((subject: string, i: number) =>
-            <SubjectItem subject={subject} key={i} onSelectedSubject={props.onSelectedSubject}/>)}
-        <PaginationChartSubjects totalPages={totalPages} queryKey={["statistics", "subjects"]}
-                                 queryFn={findAllSubjects}/>
-    </>;
+    return <div className={styles.layout}>
+        <div className={styles.subjectList}>
+            {subjects.data?.content.map((subject: string, i: number) =>
+                <SubjectItem subject={subject} key={i} onSelectedSubject={props.onSelectedSubject}/>)}
+        </div>
+        <PaginationChartSubjects
+            totalPages={totalPages}
+            queryKey={["statistics", "subjects"]}
+            queryFn={findAllSubjects}
+        />
+    </div>;
 };
 
 export default SubjectList;

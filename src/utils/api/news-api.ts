@@ -137,7 +137,6 @@ export const updateState = async (data: StateUpdate) => {
     }
 };
 
-
 export const deleteNewsById = async (id: number) => {
     const deleteNewsByIdFn = async (id: number) => {
 

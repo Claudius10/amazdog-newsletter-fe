@@ -1,3 +1,4 @@
+import styles from "./ResetPasswordRequest.module.css";
 import {useParams} from "react-router-dom";
 import {useMutation} from "@tanstack/react-query";
 import {resetPassword} from "../../../utils/api/auth-api";
@@ -10,6 +11,9 @@ import {ApiErrorDTO} from "../../../utils/api/dtos/api";
 import ApiError from "../../layout/modal-contents/ApiError";
 import Modal from "../../hooks/Modal";
 import OnSuccessModal from "../../layout/modal-contents/OnSuccessModal";
+import CircleIcon from "../../layout/CircleIcon";
+import PwVisibilityIcon from "../../../resources/Imagenes/pwvisibility.png";
+import {Button} from "../../layout/styled";
 
 const ResetPassword = () => {
     const {isModalOpen, openModal, modalContent, closeModal} = useModal();
@@ -43,57 +47,88 @@ const ResetPassword = () => {
         }
     };
 
-    const form = <form onSubmit={handleSubmit(onSubmitHandler)}>
-        <p>Restablecer contraseña</p>
+    const form = <form className={styles.form} onSubmit={handleSubmit(onSubmitHandler)}>
+        <p className={styles.text}>Restablecer contraseña</p>
 
-        <div>
-            <label htmlFor={"newPassword"}>
-                Contraseña nueva*
-            </label>
-            <div>
-                <input
-                    id={"newPassword"}
-                    type={passwordVisibility ? "password" : "text"}
-                    autoComplete={"new-password"}
-                    {...register("newPassword", {
-                        required: {value: true, message: "El valor no puede faltar"},
-                        pattern: {
-                            value: passwordRegex,
-                            message: "Mínimo 8 caracteres, una letra mayúscula, una letra minúscula, y un número"
-                        },
-                        minLength: {value: 2, message: "Mínimo 2 caracteres"},
-                        maxLength: {value: 50, message: "Máximo 50 caracteres"}
-                    })}
-                />
+        <div className={styles["login-input"]}>
+            <div className={styles["input-field"]}>
+                <div className={styles["input-container"]}>
+                    <input
+                        id={"newPassword"}
+                        type={passwordVisibility ? "password" : "text"}
+                        className={styles.input}
+                        placeholder={"Nueva contraseña"}
+                        {...register("newPassword", {
+                            required: {value: true, message: "La contraseña no puede faltar"},
+                            pattern: {
+                                value: passwordRegex,
+                                message: "Mínimo 8 caracteres, una letra mayúscula, una letra minúscula, y un número"
+                            },
+                            minLength: {
+                                value: 8,
+                                message: "Mínimo 8 caracteres, una letra mayúscula, una letra minúscula, y un número"
+                            },
+                            maxLength: {
+                                value: 50,
+                                message: "Mínimo 8 caracteres, una letra mayúscula, una letra minúscula, y un número"
+                            }
+                        })}
+                    />
+                </div>
+                <div className={styles.pwIcon}>
+                    <CircleIcon
+                        action={togglePwVisibility}
+                        icon={PwVisibilityIcon}
+                        width={"14px"}
+                        height={"14px"}
+                        alt={"toggle-password-visibility-button"}
+
+                    />
+                </div>
             </div>
+            <p className={styles.formError}>{errors.newPassword?.message}</p>
         </div>
-        <p>{errors.newPassword && errors.newPassword.message}</p>
 
-        <div>
-            <label htmlFor={"matchingNewPassword"}>
-                Reintroduzca la contraseña nueva*
-            </label>
-            <div>
-                <input
-                    id={"matchingNewPassword"}
-                    type={passwordVisibility ? "password" : "text"}
-                    autoComplete={"new-password"}
-                    {...register("matchingNewPassword", {
-                        required: {value: true, message: "El valor no puede faltar"},
-                        pattern: {
-                            value: passwordRegex,
-                            message: "Mínimo 8 caracteres, una letra mayúscula, una letra minúscula, y un número"
-                        },
-                        minLength: {value: 2, message: "Mínimo 2 caracteres"},
-                        maxLength: {value: 50, message: "Máximo 50 caracteres"}
-                    })}/>
+        <div className={styles["login-input"]}>
+            <div className={styles["input-field"]}>
+                <div className={styles["input-container"]}>
+                    <input
+                        id={"matchingNewPassword"}
+                        type={passwordVisibility ? "password" : "text"}
+                        className={styles.input}
+                        placeholder={"Reintroduzca la nueva contraseña"}
+                        {...register("matchingNewPassword", {
+                            required: {value: true, message: "La contraseña no puede faltar"},
+                            pattern: {
+                                value: passwordRegex,
+                                message: "Mínimo 8 caracteres, una letra mayúscula, una letra minúscula, y un número"
+                            },
+                            minLength: {
+                                value: 8,
+                                message: "Mínimo 8 caracteres, una letra mayúscula, una letra minúscula, y un número"
+                            },
+                            maxLength: {
+                                value: 50,
+                                message: "Mínimo 8 caracteres, una letra mayúscula, una letra minúscula, y un número"
+                            }
+                        })}
+                    />
+                </div>
+                <div className={styles.pwIcon}>
+                    <CircleIcon
+                        action={togglePwVisibility}
+                        icon={PwVisibilityIcon}
+                        width={"14px"}
+                        height={"14px"}
+                        alt={"toggle-password-visibility-button"}
+
+                    />
+                </div>
             </div>
+            <p className={styles.formError}>{errors.matchingNewPassword?.message}</p>
         </div>
-        <p>{errors.matchingNewPassword && errors.matchingNewPassword.message}</p>
 
-        <div>
-            <button disabled={!isValid} type={"submit"}>Finalizar</button>
-        </div>
+        <Button disabled={!isValid} type={"submit"}>Continuar</Button>
     </form>;
 
     return <>

@@ -6,19 +6,24 @@
     gap: 1rem;
 }
 
-.itemList {
+.header {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+.newsItem {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: center;
+    font-weight: 600;
     border-radius: 20px;
     box-shadow: #ffb12c 0 1px 3px 0, #ffb12c 0 0 0 1px;
 }
 
-.title {
+.newsItem p {
     text-align: center;
-    margin-bottom: 1rem;
-    font-weight: 600;
-    font-size: 1.5rem;
 }
 
 .placeholder {
@@ -26,10 +31,15 @@
     font-size: 2rem;
 }
 
+.pages {
+    margin-top: 4rem;
+}
+
 /* desktop */
 @media (min-width: 1400px) {
-    .itemList {
-        width: 40vw;
+    .newsItem {
+        width: 50vw;
+        min-height: 3vh;
         padding: 1rem;
     }
 }
@@ -40,7 +50,7 @@
 
 /* portrait phones */
 @media only screen and (min-device-width: 280px) and (max-device-width: 540px) {
-    .itemList {
+    .newsItem {
         width: 80vw;
         padding: 1rem;
     }
@@ -48,24 +58,27 @@
 
 /* landscape phones */
 @media only screen and (min-device-width: 653px) and (max-device-width: 932px) {
-    .itemList {
+    .newsItem {
         width: 80vw;
+        min-height: 12vh;
         padding: 1rem;
     }
 }
 
 /* portrait tablets */
 @media only screen and (min-device-height: 1024px) and (max-device-width: 915px) {
-    .itemList {
+    .newsItem {
         width: 80vw;
+        min-height: 3vh;
         padding: 1rem;
     }
 }
 
 /* landscape tablets */
 @media only screen and (min-device-width: 1024px) and (max-device-width: 1368px) {
-    .itemList {
-        width: 70vw;
+    .newsItem {
+        width: 80vw;
+        min-height: 3vh;
         padding: 1rem;
     }
 }

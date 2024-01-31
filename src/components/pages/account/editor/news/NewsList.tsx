@@ -1,22 +1,20 @@
+import styles from "./NewsList.module.css";
 import {useState} from "react";
-import {deleteNewsById, findAllNews} from "../../../../../utils/api/news-api";
-import {useSearchParams} from "react-router-dom";
-import {useMutation, useQuery} from "@tanstack/react-query";
+import {findAllNews} from "../../../../../utils/api/news-api";
+import {useNavigate, useSearchParams} from "react-router-dom";
+import {useQuery} from "@tanstack/react-query";
 import {NewsDTO} from "../../../../../utils/api/dtos/news";
 import NewsForm from "./NewsForm";
-import PaginationSubject from "../subjects/PaginationSubject";
-import NewsEntry from "./NewsEntry";
-import {ApiErrorDTO} from "../../../../../utils/api/dtos/api";
-import ApiError from "../../../../layout/modal-contents/ApiError";
-import Modal from "../../../../hooks/Modal";
-import useModal from "../../../../hooks/useModal";
+import PaginationSubject from "../statistics/PaginationSubject";
+import {Button} from "../../../../layout/styled";
 
 const NewsList = () => {
-    const {isModalOpen, openModal, modalContent, closeModal} = useModal();
     const [showForm, setShowForm] = useState<boolean>(false);
     const [searchParams] = useSearchParams();
     let pageNumber = searchParams.get("page");
     let pageSize = searchParams.get("size");
+    const navigate = useNavigate();
+
 
     const toggleForm = () => {
         setShowForm(!showForm);
@@ -28,50 +26,39 @@ const NewsList = () => {
         }
     );
 
-    const removeNews = useMutation({
-        mutationFn: deleteNewsById,
-        onSuccess: async () => {
-            await refetch();
-        },
-        onError: (error: ApiErrorDTO) => {
-            openModal(<ApiError errorMsg={error.errorMsg} closeModal={closeModal}/>);
-        }
-    });
-
-    const onDeleteConfirm = (id: number) => {
-        removeNews.mutate(id);
+    const goToNews = (id: number) => {
+        navigate(`${id}`);
     };
 
     let totalPages;
     let content;
     if (isLoading) {
-        content = <p>Cargando...</p>;
+        content = <p className={styles.placeholder}>Cargando...</p>;
         totalPages = 0;
     } else if (isError) {
-        content = <p>Ocurrió un error. Por favor, inténtelo más tarde.</p>;
+        content = <p className={styles.placeholder}>Ocurrió un error. Por favor, inténtelo más tarde.</p>;
         totalPages = 0;
     } else if (isSuccess && news.content.length === 0) {
-        content = <p>No se encontró nada</p>;
+        content = <p className={styles.placeholder}>No se encontró nada</p>;
         totalPages = 0;
     } else if (isSuccess) {
         totalPages = news.totalPages;
         content = news.content.map((news: NewsDTO) =>
-            <div key={news.id}>
-                <NewsEntry id={news.id} title={news.title} active={news.active}/>
-                <button onClick={() => {
-                    onDeleteConfirm(news.id);
-                }}>Eliminar
-                </button>
+            <div onClick={() => {
+                goToNews(news.id);
+            }} className={styles.newsItem} key={news.id}>
+                <p>{news.title}</p>
             </div>);
     }
 
-    return <div>
-        <Modal content={modalContent} show={isModalOpen} hide={closeModal}/>
-        Lista de noticias
+    return <div className={styles.layout}>
+        <p className={styles.header}>Noticias</p>
         {content}
-        <button onClick={toggleForm}>Añadir</button>
+        <Button $height={"3rem"} $width={"7rem"} onClick={toggleForm}>Añadir</Button>
         {showForm && <NewsForm refetch={refetch} toggleForm={toggleForm}/>}
-        <PaginationSubject totalPages={totalPages} queryKey={["news", "all"]} queryFn={findAllNews}/>
+        <div className={styles.pages}>
+            <PaginationSubject totalPages={totalPages} queryKey={["news", "all"]} queryFn={findAllNews}/>
+        </div>
     </div>;
 };
 

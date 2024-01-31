@@ -124,7 +124,8 @@ const DoughnutChart = (props: ChartProps) => {
 
         <div className={styles.info}>
             <NavLink to={sourceLink}>Fuente</NavLink>
-            <p className={styles.tags}>Tags: {tags.map((item, index) => <span key={index}>{(index ? ', ' : '') + item}</span>)}
+            <p className={styles.tags}>Tags: {tags.map((item, index) => <span
+                key={index}>{(index ? ', ' : '') + item}</span>)}
             </p>
         </div>
 

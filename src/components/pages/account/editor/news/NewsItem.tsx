@@ -1,10 +1,12 @@
-import {useNavigate, useParams} from "react-router-dom";
+import {NavLink, useNavigate, useParams} from "react-router-dom";
 import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
 import {deleteNewsById, findNewsById, updateState} from "../../../../../utils/api/news-api";
 import {ApiErrorDTO} from "../../../../../utils/api/dtos/api";
 import ApiError from "../../../../layout/modal-contents/ApiError";
 import useModal from "../../../../hooks/useModal";
 import Modal from "../../../../hooks/Modal";
+import styles from "./NewsItem.module.css";
+import {Button} from "../../../../layout/styled";
 
 const NewsItem = () => {
     const queryClient = useQueryClient();
@@ -50,56 +52,59 @@ const NewsItem = () => {
         updateStateFn.mutate({id, state});
     };
 
-    let newsList;
-    let stateBttn;
+    let item;
     if (newsItem.isLoading || newsItem.isFetching) {
-        newsList = <p>Cargando...</p>;
+        item = <p className={styles.placeholder}>Cargando...</p>;
     } else if (newsItem.isError) {
-        newsList = <p>Ocurrió un error. Por favor, inténtelo más tarde.</p>;
-    } else if (newsItem.isSuccess) {
+        item = <p className={styles.placeholder}>Ocurrió un error. Por favor, inténtelo más tarde.</p>;
+    } else if (newsItem.isSuccess && newsItem.data !== undefined) {
+        let stateBttn;
 
-        if (newsItem.data?.active) {
+        if (newsItem.data.active) {
             stateBttn = "Desactivar";
         } else {
             stateBttn = "Activar";
         }
 
-        newsList =
-            <div key={newsItem.data?.id}>
-                <p>Título: {newsItem.data?.title}</p>
-                <p>Autor: {newsItem.data?.author}</p>
-                <p>Texto: {newsItem.data?.text}</p>
-                <p>Imagen principal: {newsItem.data?.mainImage}</p>
-                <p>Galería imágenes:</p>
-                <div>
-                    {newsItem.data?.images.map((item: any, index: number) =>
-                        <div key={index}>
-                            <p>Nombre: {item.imageName}</p>
-                            <p>Enlace: {item.imageLink}</p>
-                        </div>
-                    )}
-                </div>
-                <p>Palabras clave: {newsItem.data?.keywords}</p>
-                <p>Enlace: {newsItem.data?.link}</p>
-                <p>Fecha creación: {newsItem.data?.createdOn}</p>
-                <p>Estado: {`${newsItem.data?.active}`}</p>
-                <button onClick={() => {
+        item = <div className={styles.news}>
+            <div className={styles.actions}>
+                <Button onClick={() => {
                     if (newsItem.data !== undefined) {
                         changeState(newsItem.data.id);
                     }
-                }}>{stateBttn}</button>
-                <button onClick={() => {
+                }}>
+                    {stateBttn}
+                </Button>
+                <Button onClick={() => {
                     if (newsItem.data !== undefined) {
                         deleteHandler(newsItem.data.id);
                     }
-                }}>Eliminar
-                </button>
-            </div>;
+                }}>
+                    Eliminar
+                </Button>
+            </div>
+
+            <div className={styles.imgContainer}>
+                <img src={newsItem.data.mainImage} alt={""}/>
+            </div>
+
+            <div className={styles.body}>
+                <p className={styles.title}>{newsItem.data.title}</p>
+                <div className={styles.text}>{newsItem.data.text.match(/.{1,2000}(?:\s|$)/g)!.map((item, index) => <p
+                    key={index}><br/>{item}</p>)}</div>
+            </div>
+
+            <div className={styles.footer}>
+                <NavLink to={newsItem.data.link}>Fuente</NavLink>
+                <p className={styles.author}>{newsItem.data.author}</p>
+                <p><span className={styles.keywords}>Palabras clave:</span> {newsItem.data.keywords}</p>
+            </div>
+        </div>;
     }
 
-    return <div>
+    return <div className={styles.layout}>
         <Modal content={modalContent} show={isModalOpen} hide={closeModal}/>
-        {newsList}
+        {item}
     </div>;
 };
 

@@ -8,6 +8,8 @@
 }
 
 .tabs {
+    display: flex;
+    justify-content: center;
     width: 100%;
     height: fit-content;
     padding-bottom: 0.2rem;
@@ -15,9 +17,10 @@
 
 .list {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     list-style: none;
     gap: 2rem;
+    padding-bottom: 0.5rem;
 }
 
 .item {
@@ -30,4 +33,10 @@
     text-decoration: none;
     color: #ffb12c;
     font-weight: 800;
+}
+
+@media (max-width: 800px) {
+    .list {
+        overflow-x: scroll;
+    }
 }

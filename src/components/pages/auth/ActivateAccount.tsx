@@ -37,9 +37,10 @@ const ActivateAccount = () => {
     return <>
         <Modal content={modalContent} show={isModalOpen} hide={closeModal}/>
         <div className={styles.layout}>
-            <p>Estamos activando tu cuenta...</p>
+            <p className={styles.text}>Activación en curso...</p>
             <BounceLoader color="#ffb12c" loading={isLoading}/>
-            {activate.isSuccess && <p>!Tu cuenta ha sido activada! Redireccionando en un momento...</p>}
+            {activate.isSuccess &&
+                <p className={styles.text}>!Tu cuenta ha sido activada! Redireccionando en un momento...</p>}
         </div>
     </>;
 };

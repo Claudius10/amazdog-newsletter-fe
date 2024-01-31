@@ -17,6 +17,8 @@ import ResetPasswordRequest from "./pages/auth/ResetPasswordRequest";
 import ResetPassword from "./pages/auth/ResetPassword";
 import NewsItemFull from "./pages/news/NewsItemFull";
 import ChartList from "./charts/ChartList";
+import AdminNav from "./pages/account/admin/AdminNav";
+import Users from "./pages/account/admin/Users";
 
 const Routes = () => {
 
@@ -45,6 +47,10 @@ const Routes = () => {
                 <Route path={"charts"} element={<ChartList/>}/>
                 <Route path={"news"} element={<NewsList/>}/>
                 <Route path={"news/:id"} element={<NewsItem/>}/>
+            </Route>
+
+            <Route path={"/admin"} element={<AdminNav/>}>
+                <Route index element={<Users/>}/>
             </Route>
         </Route>
     ));

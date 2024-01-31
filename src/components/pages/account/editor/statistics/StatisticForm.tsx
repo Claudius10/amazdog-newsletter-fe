@@ -1,5 +1,5 @@
 import {useForm} from "react-hook-form";
-import styles from "../../../../charts/ChartList.module.css";
+import styles from "../../general/ChangeAttribute.module.css";
 import {useMutation} from "@tanstack/react-query";
 import {createStatistic} from "../../../../../utils/api/statistics-api";
 import {Statistic} from "../../../../../utils/dto/statistics";
@@ -7,6 +7,7 @@ import useModal from "../../../../hooks/useModal";
 import {ApiErrorDTO} from "../../../../../utils/api/dtos/api";
 import ApiError from "../../../../layout/modal-contents/ApiError";
 import Modal from "../../../../hooks/Modal";
+import {Button} from "../../../../layout/styled";
 
 type Props = {
     refetch?: () => void
@@ -39,72 +40,90 @@ const StatisticForm = (props: Props) => {
         createStatisticHandler.mutate(data);
     };
 
-    const form = <form onSubmit={handleSubmit(onSubmitHandler)}>
-        <span>Tema/Tópico: </span>
-        <input
-            id="subject"
-            type="text"
-            {...register("subject", {
-                required: {value: true, message: "El tema/tópico no puede faltar"},
-                minLength: {value: 5, message: "Mínimo 5 letras"},
-                maxLength: {value: 255, message: "Máximo 255 letras"},
-            })}
-        />
-        <p className={styles.error}>{errors.subject?.message}</p>
-        <span>Etiqueta: </span>
-        <input
-            id="label"
-            type="text"
-            {...register("label", {
-                required: {value: true, message: "La etiqueta no puede faltar"},
-                minLength: {value: 5, message: "Mínimo 5 letras"},
-                maxLength: {value: 255, message: "Máximo 255 letras"},
-            })}
-        />
-        <p className={styles.error}>{errors.label?.message}</p>
-        <span>Valor: </span>
-        <input
-            id="value"
-            type="number"
-            step={0.01}
-            {...register("value", {
-                required: {value: true, message: "El valor no puede faltar"}
-            })}
-        />
-        <p className={styles.error}>{errors.value?.message}</p>
-        <span>Fecha: </span>
-        <input
-            id="date"
-            type="text"
-            {...register("date", {
-                required: {value: true, message: "La fecha no puede faltar"}
-            })}
-        />
-        <p className={styles.error}>{errors.date?.message}</p>
-        <span>Fuente: </span>
-        <input
-            id="source"
-            type="text"
-            {...register("source", {
-                required: {value: true, message: "La fuente no puede faltar"},
-                minLength: {value: 5, message: "Mínimo 5 letras"},
-                maxLength: {value: 255, message: "Máximo 255 letras"},
+    const form = <form className={styles.form} onSubmit={handleSubmit(onSubmitHandler)}>
+        <p className={styles.attribute}>Información nuevo dato</p>
 
-            })}
-        />
-        <p className={styles.error}>{errors.source?.message}</p>
-        <span>Tags: </span>
-        <input
-            id="Tags"
-            type="text"
-            placeholder={"Palabras separadas por coma, ejemplo: Mascotas, Perro, Gato"}
-            {...register("tags", {
-                maxLength: {value: 255, message: "Máximo 255 letras"},
+        <div className={styles.input}>
+            <input
+                id="subject"
+                type="text"
+                placeholder={"Tema/Tópico/Sujeto"}
+                {...register("subject", {
+                    required: {value: true, message: "El tema/tópico no puede faltar"},
+                    minLength: {value: 5, message: "Mínimo 5 letras"},
+                    maxLength: {value: 255, message: "Máximo 255 letras"},
+                })}
+            />
+            <p className={styles.error}>{errors.subject?.message}</p>
+        </div>
 
-            })}
-        />
-        <p className={styles.error}>{errors.tags?.message}</p>
-        <button type={"submit"} disabled={!isValid}>Finalizar</button>
+        <div className={styles.input}>
+            <input
+                id="label"
+                type="text"
+                placeholder={"Etiqueta"}
+                {...register("label", {
+                    required: {value: true, message: "La etiqueta no puede faltar"},
+                    minLength: {value: 5, message: "Mínimo 5 letras"},
+                    maxLength: {value: 255, message: "Máximo 255 letras"},
+                })}
+            />
+            <p className={styles.error}>{errors.label?.message}</p>
+        </div>
+
+        <div className={styles.input}>
+            <input
+                id="value"
+                type="number"
+                step={0.01}
+                placeholder={"Valor"}
+                {...register("value", {
+                    required: {value: true, message: "El valor no puede faltar"}
+                })}
+            />
+            <p className={styles.error}>{errors.value?.message}</p>
+        </div>
+
+        <div className={styles.input}>
+            <input
+                id="date"
+                type="text"
+                placeholder={"Fecha en formato: dd-MM-yyyy"}
+                {...register("date", {
+                    required: {value: true, message: "La fecha no puede faltar"}
+                })}
+            />
+            <p className={styles.error}>{errors.date?.message}</p>
+        </div>
+
+        <div className={styles.input}>
+            <input
+                id="source"
+                type="text"
+                placeholder={"Fuente"}
+                {...register("source", {
+                    required: {value: true, message: "La fuente no puede faltar"},
+                    minLength: {value: 5, message: "Mínimo 5 letras"},
+                    maxLength: {value: 255, message: "Máximo 255 letras"},
+
+                })}
+            />
+            <p className={styles.error}>{errors.source?.message}</p>
+        </div>
+
+        <div className={styles.input}>
+            <input
+                id="Tags"
+                type="text"
+                placeholder={"Tags: Mascotas, Perro, ..."}
+                {...register("tags", {
+                    maxLength: {value: 255, message: "Máximo 255 letras"},
+
+                })}
+            />
+            <p className={styles.error}>{errors.tags?.message}</p>
+        </div>
+        <Button type={"submit"} $margin={"0 0 1rem 0"} disabled={!isValid}>Finalizar</Button>
     </form>;
 
     return <>
