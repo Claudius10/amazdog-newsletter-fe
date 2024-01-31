@@ -14,11 +14,11 @@ const NewsPage = () => {
 
     let content;
     if (isLoading) {
-        content = <p>Cargando...</p>;
+        content = <p className={styles.placeholder}>Cargando...</p>;
     } else if (isError) {
-        content = <p>Ocurrió un error. Por favor, inténtelo más tarde.</p>;
+        content = <p className={styles.placeholder}>Ocurrió un error. Por favor, inténtelo más tarde.</p>;
     } else if (isSuccess && activeNews.length === 0) {
-        content = <p>No se encontró nada</p>;
+        content = <p className={styles.placeholder}>No se encontró nada</p>;
     } else if (isSuccess) {
         content = activeNews.map((news: NewsDTO) =>
             <NewsItem news={news} key={news.id}/>

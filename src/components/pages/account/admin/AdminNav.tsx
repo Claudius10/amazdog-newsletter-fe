@@ -1,7 +1,16 @@
 import styles from "../nav/Account.module.css";
-import {NavLink, Outlet} from "react-router-dom";
+import {NavLink, Outlet, useNavigate} from "react-router-dom";
+import {useEffect} from "react";
 
 const AdminNav = () => {
+    const isLoggedIn = localStorage.getItem("ACCESS_TOKEN") !== null;
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!isLoggedIn) {
+            navigate("/authentication");
+        }
+    }, [isLoggedIn, navigate]);
 
     return <>
         <div className={styles.layout}>

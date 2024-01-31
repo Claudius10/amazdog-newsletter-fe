@@ -11,6 +11,10 @@
     margin-top: 2rem;
 }
 
+.placeholder {
+    font-weight: 600;
+    font-size: 2rem;
+}
 
 /* desktop */
 @media (min-width: 1400px) {

@@ -1,7 +1,14 @@
+type Role = {
+    id: number;
+    authority: string;
+}
+
 export type UserDTO = {
     id: number;
     name: string;
     email: string;
+    roles: Role[];
+    isEnabled: boolean;
 }
 
 export type PasswordChangeDTO = {

@@ -22,7 +22,7 @@ const ChartForm = (props: Props) => {
     const [subjects, setSubjects] = useState<Subject[]>([]);
     const [subjectsLength, setSubjectsLength] = useState(0);
 
-    const {handleSubmit, register, reset, formState: {errors, isValid}, setValue, getValues} = useForm<ChartDTO>({
+    const {handleSubmit, register, reset, formState: {errors, isValid}, setValue} = useForm<ChartDTO>({
         mode: "onBlur",
         reValidateMode: "onBlur",
     });
@@ -60,8 +60,6 @@ const ChartForm = (props: Props) => {
         } else {
             subjects.splice(index, 1);
         }
-
-        console.log(subjects);
         setValue("subjects", subjects);
         setSubjectsLength(subjects.length);
     };

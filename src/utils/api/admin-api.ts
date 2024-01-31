@@ -2,32 +2,6 @@ import {QueryOptions} from "@tanstack/react-query/build/modern/index";
 import {keyIsValid} from "../functions";
 import {UpdateUserRoleQuery, UserDTO} from "./dtos/account";
 
-export const findUsersByRole = async (options: QueryOptions) => {
-    const findUsersByRoleFn = async (options: QueryOptions) => {
-        let role;
-
-        if (options.queryKey) {
-            role = options.queryKey.at(3);
-        }
-
-        const response = await fetch(`${process.env.REACT_APP_ADMIN_API}?roleName=${role}`, {
-            headers: {
-                "Authorization": `Bearer ${localStorage.getItem("ACCESS_TOKEN")}`
-            }
-        });
-
-        if (!response.ok) {
-            throw await response.json();
-        } else {
-            return await response.json() as Promise<UserDTO[]>;
-        }
-    };
-
-    if (keyIsValid()) {
-        return await findUsersByRoleFn(options);
-    }
-};
-
 export const findUserByEmail = async (options: QueryOptions) => {
     const findUserByEmailFn = async (options: QueryOptions) => {
         let email;
@@ -44,8 +18,10 @@ export const findUserByEmail = async (options: QueryOptions) => {
 
         if (!response.ok) {
             throw await response.json();
+        } else if (response.status === 202) {
+            return await response.text();
         } else {
-            return await response.json() as Promise<UserDTO[]>;
+            return await response.json() as Promise<UserDTO>;
         }
     };
 
@@ -66,6 +42,8 @@ export const updateUserRole = async (data: UpdateUserRoleQuery) => {
 
         if (!response.ok) {
             throw await response.json();
+        } else {
+            return await response.text();
         }
     };
 
@@ -86,6 +64,8 @@ export const enableAccount = async (email: string) => {
 
         if (!response.ok) {
             throw await response.json();
+        } else {
+            return await response.text();
         }
     };
 
@@ -106,6 +86,8 @@ export const disableAccount = async (email: string) => {
 
         if (!response.ok) {
             throw await response.json();
+        } else {
+            return await response.text();
         }
     };
 

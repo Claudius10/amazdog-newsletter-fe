@@ -18,40 +18,43 @@ import ResetPassword from "./pages/auth/ResetPassword";
 import NewsItemFull from "./pages/news/NewsItemFull";
 import ChartList from "./charts/ChartList";
 import AdminNav from "./pages/account/admin/AdminNav";
-import Users from "./pages/account/admin/Users";
+import UserItem from "./pages/account/admin/UserItem";
+import ErrorPage from "./pages/placeholders/ErrorPage";
+import NotFoundPage from "./pages/placeholders/NotFoundPage";
 
 const Routes = () => {
-
     return createBrowserRouter(createRoutesFromElements(
-        <Route path={"/"} element={<Main/>}>
-            <Route index element={<NewsPage/>}/>
-            <Route path={"/noticias"} element={<NewsPage/>}/>
-            <Route path={"/noticias/:id"} element={<NewsItemFull/>}/>
+        <Route path={"/"} element={<Main/>} errorElement={<ErrorPage/>}>
+            <Route index element={<NewsPage/>} errorElement={<ErrorPage/>}/>
+            <Route path={"/noticias"} element={<NewsPage/>} errorElement={<ErrorPage/>}/>
+            <Route path={"/noticias/:id"} element={<NewsItemFull/>} errorElement={<ErrorPage/>}/>
 
-            <Route path={"/estadísticas"} element={<StatisticsPage/>}/>
-            <Route path={"/authentication"} element={<Login/>}/>
-            <Route path={"/register"} element={<Register/>}/>
-            <Route path={"/activate/:token"} element={<ActivateAccount/>}/>
-            <Route path={"/request-password-reset"} element={<ResetPasswordRequest/>}/>
-            <Route path={"/password-reset/:token"} element={<ResetPassword/>}/>
+            <Route path={"/estadísticas"} element={<StatisticsPage/>} errorElement={<ErrorPage/>}/>
+            <Route path={"/authentication"} element={<Login/>} errorElement={<ErrorPage/>}/>
+            <Route path={"/register"} element={<Register/>} errorElement={<ErrorPage/>}/>
+            <Route path={"/activate/:token"} element={<ActivateAccount/>} errorElement={<ErrorPage/>}/>
+            <Route path={"/request-password-reset"} element={<ResetPasswordRequest/>} errorElement={<ErrorPage/>}/>
+            <Route path={"/password-reset/:token"} element={<ResetPassword/>} errorElement={<ErrorPage/>}/>
 
-            <Route path={"/profile"} element={<Account/>}>
-                <Route index element={<Profile/>}/>
-                <Route path={"settings"} element={<Settings/>}/>
+            <Route path={"/profile"} element={<Account/>} errorElement={<ErrorPage/>}>
+                <Route index element={<Profile/>} errorElement={<ErrorPage/>}/>
+                <Route path={"settings"} element={<Settings/>} errorElement={<ErrorPage/>}/>
             </Route>
 
-            <Route path={"/editor"} element={<EditorNav/>}>
-                <Route index element={<StatisticList/>}/>
-                <Route path={"statistics"} element={<StatisticList/>}/>
-                <Route path={"statistics/subject"} element={<StatisticItem/>}/>
-                <Route path={"charts"} element={<ChartList/>}/>
-                <Route path={"news"} element={<NewsList/>}/>
-                <Route path={"news/:id"} element={<NewsItem/>}/>
+            <Route path={"/editor"} element={<EditorNav/>} errorElement={<ErrorPage/>}>
+                <Route index element={<StatisticList/>} errorElement={<ErrorPage/>}/>
+                <Route path={"statistics"} element={<StatisticList/>} errorElement={<ErrorPage/>}/>
+                <Route path={"statistics/subject"} element={<StatisticItem/>} errorElement={<ErrorPage/>}/>
+                <Route path={"charts"} element={<ChartList/>} errorElement={<ErrorPage/>}/>
+                <Route path={"news"} element={<NewsList/>} errorElement={<ErrorPage/>}/>
+                <Route path={"news/:id"} element={<NewsItem/>} errorElement={<ErrorPage/>}/>
             </Route>
 
-            <Route path={"/admin"} element={<AdminNav/>}>
-                <Route index element={<Users/>}/>
+            <Route path={"/admin"} element={<AdminNav/>} errorElement={<ErrorPage/>}>
+                <Route index element={<UserItem/>} errorElement={<ErrorPage/>}/>
             </Route>
+
+            <Route path="*" element={<NotFoundPage/>} errorElement={<ErrorPage/>}/>
         </Route>
     ));
 };

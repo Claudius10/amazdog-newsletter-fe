@@ -12,11 +12,11 @@ const StatisticsPage = () => {
 
     let content;
     if (isLoading) {
-        content = <p>Cargando...</p>;
+        content = <p className={styles.placeholder}>Cargando...</p>;
     } else if (isError) {
-        content = <p>Ocurrió un error. Por favor, inténtelo más tarde.</p>;
+        content = <p className={styles.placeholder}>Ocurrió un error. Por favor, inténtelo más tarde.</p>;
     } else if (isSuccess && chartsData.length === 0) {
-        content = <p>No se encontró nada</p>;
+        content = <p className={styles.placeholder}>No se encontró nada</p>;
     } else if (isSuccess) {
         content = chartsData.map((data, index) => <div key={index}>{GenerateChart(data)}</div>);
     }

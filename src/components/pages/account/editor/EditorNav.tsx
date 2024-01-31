@@ -1,7 +1,17 @@
-import {NavLink, Outlet} from "react-router-dom";
+import {NavLink, Outlet, useNavigate} from "react-router-dom";
 import styles from "../nav/Account.module.css";
+import {useEffect} from "react";
 
 const EditorNav = () => {
+    const isLoggedIn = localStorage.getItem("ACCESS_TOKEN") !== null;
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!isLoggedIn) {
+            navigate("/authentication");
+        }
+    }, [isLoggedIn, navigate]);
+
     return <>
         <div className={styles.layout}>
             <nav className={styles.tabs} id={"sidebar"}>

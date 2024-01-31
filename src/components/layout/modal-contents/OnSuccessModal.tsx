@@ -3,6 +3,7 @@ import styles from "./OnSuccessModal.module.css";
 
 type Props = {
     closeModal: () => void;
+    extraAction?: () => void;
     text: string;
     redirect: boolean;
 }
@@ -12,6 +13,11 @@ const OnSuccessModal = (props: Props) => {
 
     const handler = () => {
         props.closeModal();
+
+        if (props.extraAction) {
+            props.extraAction();
+        }
+
         if (props.redirect) {
             navigate("/");
         }

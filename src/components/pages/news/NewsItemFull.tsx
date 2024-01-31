@@ -13,9 +13,9 @@ const NewsItemFull = () => {
 
     let content;
     if (isLoading) {
-        content = <p>Cargando...</p>;
+        content = <p className={styles.placeholder}>Cargando...</p>;
     } else if (isError) {
-        content = <p>Ocurrió un error. Por favor, inténtelo más tarde.</p>;
+        content = <p className={styles.placeholder}>Ocurrió un error. Por favor, inténtelo más tarde.</p>;
     } else if (isSuccess) {
         content = <div className={styles.news}>
 

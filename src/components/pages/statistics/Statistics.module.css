@@ -12,6 +12,11 @@
     row-gap: 3rem;
 }
 
+.placeholder {
+    font-weight: 600;
+    font-size: 2rem;
+}
+
 /* desktop */
 @media (min-width: 1400px) {
     .rows {

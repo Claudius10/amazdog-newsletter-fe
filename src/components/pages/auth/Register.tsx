@@ -62,7 +62,7 @@ const Register = () => {
                                 required: {value: true, message: "El nombre no puede faltar"},
                                 pattern: {
                                     value: esCharsRegex,
-                                    message: "Solo se aceptan letras"
+                                    message: "Solo se aceptan letras. Ejemplo: José Miguel"
                                 },
                                 minLength: {
                                     value: 2,
@@ -160,7 +160,11 @@ const Register = () => {
                                 autoComplete={"new-password"}
                                 placeholder={"Confirmar contraseña"}
                                 {...register("matchingPassword", {
-                                    required: {value: true, message: "Confirme la contraseña introducida"}
+                                    required: {value: true, message: "Confirme la contraseña introducida"},
+                                    pattern: {
+                                        value: passwordRegex,
+                                        message: "Mínimo 8 caracteres, una letra mayúscula, una letra minúscula, y un número"
+                                    }
                                 })}
                             />
                         </div>

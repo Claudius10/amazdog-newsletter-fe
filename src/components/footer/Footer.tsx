@@ -30,6 +30,7 @@ const Footer = () => {
                     <p className={styles.header}>Compañía</p>
                     <NavLink to={"https://amazdog.com/index.php/sobre-nosotros/"}>Sobre nosotros</NavLink>
                     <NavLink to={"https://amazdog.com/index.php/contacto/"}>Contacto</NavLink>
+                    <NavLink to={"https://amazdog.com/"}>Página principal</NavLink>
                 </div>
             </div>
 
