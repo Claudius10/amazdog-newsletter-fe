@@ -40,7 +40,7 @@ const DoughnutChart = (props: ChartProps) => {
                 display: false,
                 formatter: function (statistic: Statistic) {
                     if (!Number.isInteger(statistic.value)) {
-                        return (statistic.value * 100).toFixed(0) + "%";
+                        return (statistic.value * 100).toFixed(2) + "%";
                     }
                     return statistic.value;
                 },
@@ -56,7 +56,7 @@ const DoughnutChart = (props: ChartProps) => {
                     label: function (context: any) {
                         context.dataset.label = context.label;
                         if (!Number.isInteger(context.parsed)) {
-                            return `${context.label}: ${(context.parsed * 100).toFixed(0) + "%"}`;
+                            return `${context.label}: ${(context.parsed * 100).toFixed(2) + "%"}`;
                         }
                     },
                     title: function (context: any) {
@@ -85,7 +85,7 @@ const DoughnutChart = (props: ChartProps) => {
                 ticks: {
                     callback: (value: any) => {
                         if (!Number.isInteger(value)) {
-                            return (value * 100).toFixed(0) + "%";
+                            return (value * 100).toFixed(2) + "%";
                         } else {
                             return value;
                         }

@@ -36,7 +36,7 @@ const BarChart = (props: ChartProps) => {
                 display: false,
                 formatter: function (statistic: Statistic) {
                     if (!Number.isInteger(statistic.value)) {
-                        return (statistic.value * 100).toFixed(0) + "%";
+                        return (statistic.value * 100).toFixed(2) + "%";
                     }
                     return statistic.value;
                 },
@@ -51,7 +51,7 @@ const BarChart = (props: ChartProps) => {
                 callbacks: {
                     label: function (context: any) {
                         if (!Number.isInteger(context.parsed.y)) {
-                            return `${context.dataset.label}: ${(context.parsed.y * 100).toFixed(0) + "%"}`;
+                            return `${context.dataset.label}: ${(context.parsed.y * 100).toFixed(2) + "%"}`;
                         }
                     }
                 }
@@ -78,7 +78,7 @@ const BarChart = (props: ChartProps) => {
                 ticks: {
                     callback: (value: any) => {
                         if (!Number.isInteger(value)) {
-                            return (value * 100).toFixed(0) + "%";
+                            return (value * 100).toFixed(2) + "%";
                         } else {
                             return value;
                         }
