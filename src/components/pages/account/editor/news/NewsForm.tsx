@@ -48,7 +48,6 @@ const NewsForm = (props: Props) => {
                 placeholder={"Título"}
                 {...register("title", {
                     required: {value: true, message: "El título no puede faltar"},
-                    minLength: {value: 5, message: "Mínimo 5 letras"},
                     maxLength: {value: 255, message: "Máximo 255 letras"},
                 })}
             />
@@ -62,7 +61,6 @@ const NewsForm = (props: Props) => {
                 placeholder={"Autor"}
                 {...register("author", {
                     required: {value: true, message: "El autor no puede faltar"},
-                    minLength: {value: 5, message: "Mínimo 5 letras"},
                     maxLength: {value: 255, message: "Máximo 255 letras"},
                 })}
             />
@@ -76,8 +74,7 @@ const NewsForm = (props: Props) => {
             cols={75}
             placeholder={"Texto de la noticia"}
             {...register("text", {
-                required: {value: true, message: "El texto no puede faltar"},
-                minLength: {value: 5, message: "Mínimo 5 letras"}
+                required: {value: true, message: "El texto no puede faltar"}
             })}
         />
             <p className={styles.error}>{errors.text?.message}</p>

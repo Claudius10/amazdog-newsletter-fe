@@ -77,7 +77,6 @@ const ChartForm = (props: Props) => {
                     placeholder={"Título, públicamente visible"}
                     {...register("title", {
                         required: {value: true, message: "El título no puede faltar"},
-                        minLength: {value: 5, message: "Mínimo 5 letras"},
                         maxLength: {value: 255, message: "Máximo 255 letras"},
                     })}
                 />

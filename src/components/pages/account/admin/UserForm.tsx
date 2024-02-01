@@ -29,7 +29,6 @@ const UserForm = (props: Props) => {
                 placeholder={"Correo electrónico"}
                 {...register("email", {
                     required: {value: true, message: "El email no puede faltar"},
-                    minLength: {value: 2, message: "Mínimo 2 caracteres"},
                     maxLength: {value: 50, message: "Máximo 50 caracteres"}
                 })}
             />

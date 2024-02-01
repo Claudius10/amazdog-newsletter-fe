@@ -50,7 +50,6 @@ const StatisticForm = (props: Props) => {
                 placeholder={"Tema/Tópico/Sujeto"}
                 {...register("subject", {
                     required: {value: true, message: "El tema/tópico no puede faltar"},
-                    minLength: {value: 5, message: "Mínimo 5 letras"},
                     maxLength: {value: 255, message: "Máximo 255 letras"},
                 })}
             />
@@ -64,7 +63,6 @@ const StatisticForm = (props: Props) => {
                 placeholder={"Etiqueta"}
                 {...register("label", {
                     required: {value: true, message: "La etiqueta no puede faltar"},
-                    minLength: {value: 5, message: "Mínimo 5 letras"},
                     maxLength: {value: 255, message: "Máximo 255 letras"},
                 })}
             />
@@ -103,7 +101,6 @@ const StatisticForm = (props: Props) => {
                 placeholder={"Fuente"}
                 {...register("source", {
                     required: {value: true, message: "La fuente no puede faltar"},
-                    minLength: {value: 5, message: "Mínimo 5 letras"},
                     maxLength: {value: 255, message: "Máximo 255 letras"},
 
                 })}
