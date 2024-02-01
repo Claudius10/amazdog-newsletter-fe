@@ -39,6 +39,7 @@ const LineChart = (props: ChartProps) => {
                 position: 'bottom' as const,
             },
             datalabels: {
+                display: false,
                 formatter: function (statistic: Statistic) {
                     if (!Number.isInteger(statistic.value)) {
                         return (statistic.value * 100).toFixed(0) + "%";
