@@ -66,7 +66,7 @@
 /* portrait phones */
 @media only screen and (min-device-width: 280px) and (max-device-width: 540px) {
     .layout {
-        height: 45rem;
+        height: 60rem;
     }
 
     .container {
@@ -86,7 +86,7 @@
 /* landscape phones */
 @media only screen and (min-device-width: 653px) and (max-device-width: 932px) {
     .layout {
-        height: 90vh;
+        height: 40rem;
     }
 
     .container {
@@ -106,7 +106,7 @@
 /* portrait tablets */
 @media only screen and (min-device-height: 1024px) and (max-device-width: 915px) {
     .layout {
-        height: 30vh;
+        height: 60rem;
     }
 
     .container {
@@ -117,7 +117,7 @@
 /* landscape tablets */
 @media only screen and (min-device-width: 1024px) and (max-device-width: 1368px) {
     .layout {
-        height: 35vh;
+        height: 60rem;
     }
 
     .container {
