@@ -41,11 +41,11 @@
 /* desktop */
 @media (min-width: 1400px) {
     .layout {
-        width: 30vw;
+        min-width: 30vw;
     }
 
     .chartContainer {
-        width: 30vw;
+        min-width: 30vw;
         height: 46vh;
     }
 }

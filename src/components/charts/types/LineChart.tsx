@@ -70,14 +70,12 @@ const LineChart = (props: ChartProps) => {
                     display: false,
                     text: ""
                 },
-                stacked: true,
             },
             y: {
                 title: {
                     display: true,
                     text: "Cantidad"
                 },
-                stacked: true,
                 beginAtZero: true,
                 offset: true,
                 ticks: {
