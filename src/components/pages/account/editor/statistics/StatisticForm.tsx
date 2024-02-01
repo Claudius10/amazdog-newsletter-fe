@@ -73,8 +73,8 @@ const StatisticForm = (props: Props) => {
             <input
                 id="value"
                 type="number"
-                step={0.01}
-                placeholder={"Valor"}
+                step={0.001}
+                placeholder={"Valor, % en decimales: 0.498 (49.8%)"}
                 {...register("value", {
                     required: {value: true, message: "El valor no puede faltar"}
                 })}
