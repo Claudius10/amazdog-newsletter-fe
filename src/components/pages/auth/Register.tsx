@@ -1,6 +1,6 @@
 import styles from "./Register.module.css";
 import PwVisibilityIcon from "../../../resources/Imagenes/pwvisibility.png";
-import {NavLink, useNavigate} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import {useState} from "react";
 import {useForm} from "react-hook-form";
 import {RegisterDTO} from "../../../utils/api/dtos/auth";
@@ -17,7 +17,6 @@ import ApiError from "../../layout/modal-contents/ApiError";
 const Register = () => {
     const {isModalOpen, modalContent, openModal, closeModal} = useModal();
     const [passwordVisibility, setPwVisibility] = useState(true);
-    const navigate = useNavigate();
     const {
         register,
         handleSubmit,
@@ -30,7 +29,6 @@ const Register = () => {
     const registration = useMutation({
         mutationFn: registerFn,
         onSuccess: () => {
-            navigate("/");
             openModal(<RegisterModalContent closeModal={closeModal}/>);
         },
         onError: (error: ApiErrorDTO) => {

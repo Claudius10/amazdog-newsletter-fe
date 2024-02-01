@@ -55,7 +55,7 @@ export const updateUserRole = async (data: UpdateUserRoleQuery) => {
 export const enableAccount = async (email: string) => {
     const enableAccountFn = async (email: string) => {
 
-        const response = await fetch(`${process.env.REACT_APP_ADMIN_API}?userEmail=${email}`, {
+        const response = await fetch(`${process.env.REACT_APP_ADMIN_API}/enable?userEmail=${email}`, {
             method: "PUT",
             headers: {
                 "Authorization": `Bearer ${localStorage.getItem("ACCESS_TOKEN")}`
@@ -77,7 +77,7 @@ export const enableAccount = async (email: string) => {
 export const disableAccount = async (email: string) => {
     const disableAccountFn = async (email: string) => {
 
-        const response = await fetch(`${process.env.REACT_APP_ADMIN_API}?userEmail=${email}`, {
+        const response = await fetch(`${process.env.REACT_APP_ADMIN_API}/disable?userEmail=${email}`, {
             method: "PUT",
             headers: {
                 "Authorization": `Bearer ${localStorage.getItem("ACCESS_TOKEN")}`
