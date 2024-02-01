@@ -96,6 +96,9 @@ const BarChart = (props: ChartProps) => {
                         tags.push(tag);
                     }
                 });
+
+                const date = new Date(statistic.date);
+                statistic.date = String(date.getFullYear());
             }
         );
     });
