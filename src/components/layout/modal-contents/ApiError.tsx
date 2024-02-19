@@ -3,7 +3,7 @@ import {Button} from "../styled";
 
 type Props = {
     closeModal: () => void;
-    errorMsg?: string[];
+    errorMsg?: string[] | string;
 }
 
 const ApiError = (props: Props) => {
@@ -15,7 +15,11 @@ const ApiError = (props: Props) => {
             </p>
         );
     } else {
-        message = props.errorMsg.map(message => <p className={styles.text}>{message}</p>);
+        if (typeof props.errorMsg === "string") {
+            message = <p className={styles.text}>{props.errorMsg}</p>;
+        } else {
+            message = props.errorMsg.map(message => <p className={styles.text}>{message}</p>);
+        }
     }
 
     return <div className={styles.modal}>
