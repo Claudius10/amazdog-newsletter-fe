@@ -10,7 +10,7 @@ export const registerFn = async (data: RegisterDTO) => {
         }
     });
     if (!response.ok) {
-        throw await response.text();
+        throw await response.json();
     }
 };
 
